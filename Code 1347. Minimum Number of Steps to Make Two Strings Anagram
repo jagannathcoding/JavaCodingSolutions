@@ -1,0 +1,43 @@
+/*class Solution {
+    public int minSteps(String s, String t) 
+    {
+        int l=s.length();
+        int c_s[]=new int[26];
+        int t_s[]=new int[26];
+        for(int i=0;i<l;i++)
+        {
+            c_s[s.charAt(i)-'a']++;
+            t_s[t.charAt(i)-'a']++;
+        }    
+        int res=0;
+        for(int j=0;j<26;j++)
+        {
+            int freqs=c_s[j];
+            int freqt=t_s[j];
+            if(freqs>freqt)
+            res+=freqs-freqt;
+        }
+        return res;
+        //tc:o(n)
+        //sc: O(26) ~ O(1)
+    }
+}*/
+
+class Solution {
+    public int minSteps(String s, String t) 
+    {
+        int l=s.length();
+        int mp[]=new int[26];
+        for(int i=0;i<l;i++)
+        {
+            mp[s.charAt(i)-'a']++;
+            mp[t.charAt(i)-'a']--;
+        }
+        int res=0;
+        for(int i=0;i<26;i++)
+        {
+            res+=Math.max(mp[i],0);
+        }
+        return res;
+    }
+}
