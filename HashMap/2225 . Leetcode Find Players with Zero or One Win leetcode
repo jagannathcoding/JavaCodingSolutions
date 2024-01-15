@@ -1,0 +1,35 @@
+class Solution {
+    public List<List<Integer>> findWinners(int[][] matches) 
+    {
+        HashMap<Integer,Integer>map=new HashMap<>();
+        for(int[] j:matches)
+        {
+            int lost=j[1];
+            map.put(lost,map.getOrDefault(lost,0)+1);
+        }
+        List<Integer>notlost=new ArrayList<>();
+        List<Integer>oneloss=new ArrayList<>();
+        
+        for(int []i:matches)
+        {
+            int win=i[0];
+            int loss=i[1];
+            if(map.get(loss)==1)
+            oneloss.add(loss);
+
+            if(!map.containsKey(win))
+            {
+                notlost.add(win);
+                map.put(win,2);
+            }
+        }
+        Collections.sort(notlost);
+        Collections.sort(oneloss);
+        return Arrays.asList(notlost,oneloss);
+    }
+}
+/*
+//T.C : O(n*logn)
+//S.C : O(n)
+
+*/
