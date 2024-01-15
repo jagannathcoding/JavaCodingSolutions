@@ -1,0 +1,23 @@
+class Solution {
+    public int minSteps(String s, String t) 
+    {
+         int l=s.length();
+      int[] mp_s = new int[26];
+        int[] mp_t = new int[26];
+        for(int i=0;i<l;i++)
+        {
+            mp_s[s.charAt(i)-'a']++;
+        }
+        for(int i=0;i<t.length();i++)
+         mp_t[t.charAt(i)-'a']++;
+        int res=0;
+        for(int i=0;i<mp_s.length;i++)
+        {
+            res+=Math.abs(mp_s[i]-mp_t[i]);
+        }
+        
+        return res;    
+    }
+}
+/* tc:o(n)
+sc:o(1)*/
