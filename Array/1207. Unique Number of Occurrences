@@ -1,0 +1,22 @@
+//java code unique number of occurences
+class Solution 
+{ 
+    public boolean uniqueOccurrences(int[] arr) 
+    {
+       int nums[]=new int[2001];
+       for(int i:arr)
+       {
+           nums[i+1000]++;
+       }
+       Arrays.sort(nums);
+       System.out.print(Arrays.toString(nums));
+       for(int i=1;i<2001;i++)
+       {
+           if(nums[i]!=0&&nums[i]==nums[i-1])return false;
+       }
+       return true;
+    }
+}
+
+//T.C : O(nlogn)
+//S.C : O(1)
