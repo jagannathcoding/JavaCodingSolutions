@@ -1,0 +1,34 @@
+class Solution 
+{
+    public int compress(char[] chars) 
+    {
+        int index=0;
+        int i=0;
+        while(i<chars.length)
+        {
+            char curr_char=chars[i];
+            int cnt=0;
+            while(i<chars.length&&chars[i]==curr_char)//duplicate ber korchi
+            {
+                cnt++;
+                i++;
+            }
+            chars[index]=curr_char;
+            index++;
+            if(cnt>1)
+            {
+                String s1=Integer.toString(cnt);
+                for(char ch:s1.toCharArray())
+                {
+                    chars[index]=ch;
+                    index++;
+                }
+            } 
+
+        }
+         return index;
+    }
+}
+
+/*tc :o(n)
+sc:o(1)*/
