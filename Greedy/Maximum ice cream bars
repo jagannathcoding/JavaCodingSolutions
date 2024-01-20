@@ -1,0 +1,23 @@
+class Solution 
+{
+    public int maxIceCream(int[] costs, int coins) 
+    {
+        Arrays.sort(costs);
+        int cnt=0;
+        for(int currentcost:costs)
+        {
+            if(currentcost>coins) return cnt;
+
+            else
+            {
+                cnt++;
+                coins=coins-currentcost;
+            }
+        }
+        return cnt;
+    }
+
+}
+
+////GREDY:TC (NLOGN)
+//SC:O(1)
