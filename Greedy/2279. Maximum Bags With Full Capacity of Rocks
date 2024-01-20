@@ -1,0 +1,31 @@
+class Solution {
+    public int maximumBags(int[] capacity, int[] rocks, int additionalRocks) 
+    {
+        ArrayList<Integer>alist=new ArrayList<>();
+        for(int i=0;i<capacity.length;i++)
+        {
+            int rockkotoachey=rocks[i];
+            int capacityrock=capacity[i];
+            int req=capacityrock-rockkotoachey;
+            alist.add(req);   
+    }
+    Collections.sort(alist);
+int cnt=0;
+for(int i=0;i<capacity.length;i++)
+{
+    
+        if(additionalRocks>=alist.get(i))
+        {
+            additionalRocks=additionalRocks-alist.get(i);
+            cnt++;
+        }
+        else
+        {
+            break;
+        }
+    
+}
+return cnt;
+}
+}/* tc o(n log n)
+sc o(n)*/
