@@ -1,0 +1,20 @@
+class Solution {
+    public boolean checkIfCanBreak(String s1, String s2) 
+    {
+        char a[]=s1.toCharArray();
+        char b[]=s2.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int i=0;
+        while(i<s1.length()&&a[i]>=b[i])i++;
+        if(i==s1.length())return true;
+        i=0;
+         while(i<s2.length()&&b[i]>=a[i])i++;
+        return i==s2.length();
+          
+    }
+}
+//tc;o(n log n)
+//sc :o(1)~o(26)
+//or o(1)
+//dekhtey hobey sir
