@@ -1,0 +1,61 @@
+class Solution 
+{
+    public int[] findErrorNums(int[] nums) 
+    {
+        int l=nums.length;
+        int dup=-1;
+        int miss=-1;
+        for(int i=0;i<nums.length;i++)
+        {
+            int num=Math.abs(nums[i]);
+            if(nums[num-1]<0)
+            {
+                dup=num;
+            }
+            else
+            {
+                nums[num-1]*=-1;
+            }
+        }
+        for(int i=0;i<l;i++)
+        {
+            if(nums[i]>0)
+            {
+                miss=i+1;
+            }
+        }
+        return new int[]{dup,miss};
+    }
+}
+//tc:o(n)
+//sc:o(1)
+
+///app 2 using hashset
+/*class Solution 
+{
+    public int[] findErrorNums(int[] nums) 
+    {
+        HashSet<Integer>set=new HashSet<Integer>();
+        int duplicate=0,miss=0;
+        for(int i=0;i<nums.length;i++)
+        {
+           
+            if(set.contains(nums[i]))
+            {
+                duplicate=nums[i];
+            }
+             set.add(nums[i]);
+        }
+        for(int i=1;i<=nums.length;i++)
+        {
+            if(set.contains(i)==false)
+            {
+                return new int[]{duplicate,i};
+            }
+        }
+        return new int[]{};
+    }
+}
+
+//tc:o(n)
+//sc:o(n)*/
