@@ -1,0 +1,43 @@
+class Solution 
+{
+    public int[] countBits(int n)
+    {
+        int res[]=new int[n+1];
+        for(int i=0;i<=n;i++)
+        {
+            res[i]=Integer.bitCount(i);
+        }    
+        return res;
+    }
+    //tc:o(nlogn)
+    //sc:o(N)
+}
+***********************************************************************************approach -2 ****************************
+
+class Solution 
+{
+    public int[] countBits(int n)
+    {
+       
+        int res[]=new int[n+1];
+
+         if(n==0) return res;
+
+
+         res[1]=1;
+         for(int i=1;i<=n;i++)
+         {
+             if(i%2!=0)
+             {
+               res[i]=res[i/2]+1;
+             }
+             else
+             {
+                 res[i]=res[i/2];
+             }
+         }
+         return res;
+    }
+}
+//tc:o(n)
+//sc:o(n)
