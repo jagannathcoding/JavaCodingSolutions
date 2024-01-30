@@ -1,0 +1,36 @@
+class Solution {
+    int operate(int a,int b,String token)
+    {
+        if(token.equals("+")) return a+b;
+        if(token.equals("-"))return a-b;
+        if(token.equals("*"))return(int)((long)a*(long)b);
+        if(token.equals("/"))return a/b;
+
+        return -1;
+    }
+    public int evalRPN(String[] tokens)
+    {
+        Stack<Integer>st=new Stack<>();
+        int result=0;
+        for(String s:tokens)
+        {
+            if(s.equals("+")||s.equals("-")||s.equals("*")||s.equals("/"))
+            {
+                //top 2 elements le pop korey  kaj kore niye
+                //abar stack e diye dao
+                int b=st.pop();
+                int a=st.pop();
+                result=operate(a,b,s);
+                st.push(result) ;
+            }
+            else
+            {
+                st.push(Integer.parseInt(s));
+            }
+        }
+        return st.pop();        
+    }
+}
+//Approach-1 (Basic stack approach)
+//T.C : O(n)
+//S.C : O(n)
