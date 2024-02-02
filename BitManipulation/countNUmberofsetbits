@@ -1,0 +1,49 @@
+/*rnab has given me a challenge. I have to calculate the number of numbers which are less than a certain value n,
+ * and have exactly k set bits in its binary form.
+ * As you are a Prepster like me, help me write a code that will take input for n and k and give the expected output.
+
+Constraints :
+1<=n<=10000
+1<=k<=10
+Input Format :
+First line containing n and k space separated
+Output Format :
+Number of numbers present in a single line
+
+Sample Input:
+7 2
+Sample Output:
+3
+Explanation:
+11,110,101 -> These three numbers.*/
+import java.io.*;
+import java.util.*;
+class countNUmberofsetbits
+{
+    static int countSetBits(int x)
+    {
+        if(x==0)return 0;
+        
+        return 1+countSetBits(x&(x-1));
+        
+    }
+    public static void main()throws IOException
+    {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter limit");
+        int n=Integer.parseInt(br.readLine());
+        System.out.println("Enter k");
+        int k=Integer.parseInt(br.readLine());
+        int p=0;
+        for(int i=1;i<=n;i++)
+        {
+            int y=countSetBits(i);
+            if(y==k)
+            {
+                System.out.println(i);
+                p++;
+            }
+        }
+        System.out.print("Frequency"+p);
+    }
+}
