@@ -33,6 +33,26 @@ You don't need to read input or print anything. Your task is to complete the fun
 Expected Time Complexity: O(log(N))
 Expected Auxiliary Space: O(1)
 
+
+class Solution {
+    static int findPosition(int n) {
+        // code here
+        int cnt=0;
+        int pos=0;
+        while(n>0)
+        {
+            cnt=cnt+(n&1);
+            pos++;
+            n>>=1;
+        }
+        if (cnt != 1)
+        {
+            return -1;
+        }
+        return pos;
+    }
+    }
+
 Constraints:
 0 <= N <= 108
 
