@@ -1,0 +1,46 @@
+Given a number, the task is to set all odd bits of a number.
+NOTE: Position of Least Significant Bit is considered as 1.
+
+Example 1:
+
+Input: n = 20
+Output: 21 
+Explanation: Binary representation of 20 
+is 10100. Setting all odd bits make the 
+number 10101 which is binary
+representation of 21.
+Example 2:
+
+Input: n = 10
+Output: 15
+Explanation: Binary representation of 10
+is 1010. Setting all odd bits make the
+number 1111 which is binary representation
+of 15.
+
+Your Task:  
+You dont need to read input or print anything. Complete the function setAllOddBitsâ€‹() which takes n as input parameter and returns the modified number.
+
+Expected Time Complexity: O(1)
+Expected Auxiliary Space: O(1)
+
+Constraints:
+1<= n <=10^9
+
+
+class Solution {
+    static long setAllOddBits(long n){
+        // code here
+        long cnt=0;
+        long res=0;
+        for(long temp=n;temp>0;temp>>=1)
+        {
+            if(cnt%2==0)
+            {
+                res|=(1<<cnt);
+            }
+            cnt++;
+        }
+        return (n|res);
+    }
+}
