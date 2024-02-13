@@ -1,0 +1,82 @@
+Given an array of strings words, return the first palindromic string in the array. If there is no such string, return an empty string "".
+
+A string is palindromic if it reads the same forward and backward.
+
+ 
+
+Example 1:
+
+Input: words = ["abc","car","ada","racecar","cool"]
+Output: "ada"
+Explanation: The first string that is palindromic is "ada".
+Note that "racecar" is also palindromic, but it is not the first.
+Example 2:
+
+Input: words = ["notapalindrome","racecar"]
+Output: "racecar"
+Explanation: The first and only string that is palindromic is "racecar".
+Example 3:
+
+Input: words = ["def","ghi"]
+Output: ""
+Explanation: There are no palindromic strings, so the empty string is returned.
+ 
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consists only of lowercase English letters.
+
+
+//Approach-1 (creating a reversed string)
+//T.C : O(m*n) - m = number of words, n = max hocchey length of words
+//S.C : O(n) - banachhi reversed string
+/*class Solution {
+    public String firstPalindrome(String[] words) {
+        for (String word : words) {
+            String reversed = new StringBuilder(word).reverse().toString();
+
+            if (word.equals(reversed)) {
+                return word;
+            }
+        }
+        return "";
+    }
+}
+
+*/
+//Approach-2 (using 2 pointer sir er)
+//T.C : O(m*n) - m = number of words, n = max length length of words
+//S.C : O(1)
+import java.util.List;
+public class Solution {
+    public String firstPalindrome(String[] words)
+     {
+       for(String s:words)
+       {
+           if(isPalindrome(s))
+           {
+               return s;
+           }
+       }
+       return "";
+     }
+     boolean isPalindrome(String s1)
+     {
+         int i=0;
+         int j=s1.length()-1;
+         while(i<j)
+         {
+             if(s1.charAt(i)==s1.charAt(j))
+             {
+                 i++;
+                 j--;
+             }
+             else return false;
+         }
+         return true;
+     }
+}
+//tc:o(m*n)///m=number of words,n=max length of words
+//sc:o(1)
