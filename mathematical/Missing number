@@ -1,0 +1,61 @@
+/*
+Approach 1- Simple mathematical approach
+//tc:o(n)
+//sc:o(1)
+class Solution {
+    public int missingNumber(int[]nums) 
+    {   
+        int l=nums.length;
+        int sum=(l*(l+1))/2;
+        System.out.print(sum);
+
+        int z=0;
+        for(int i=0;i<l;i++)z=z+nums[i];
+
+        return sum-z;
+    }
+}
+*/
+//Approach-2
+//tc:o(N)
+//sc:o(1)
+/*
+class Solution 
+{
+    public int missingNumber(int[]nums) 
+    {  
+        int res=nums.length;
+        for(int i=0;i<nums.length;i++)
+        {
+            res=res^i;
+            res=res^nums[i];
+        }
+        return res;
+    }
+}*/
+class Solution 
+{
+    // T.C: O(nlogn)
+// S.C: O(1)
+    public int missingNumber(int[]nums) 
+    { 
+        Arrays.sort(nums);
+        int res=nums.length;
+        int lb=0;
+        int ub=nums.length-1;
+        while(lb<=ub)
+        {
+            int mid=lb+(ub-lb)/2;
+            if(nums[mid]>mid)
+            {
+                res=mid;
+                ub=mid-1;
+            }
+            else
+            {
+                lb=mid+1;
+            }
+        }
+        return res;
+    }
+}
