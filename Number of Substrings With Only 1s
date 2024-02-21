@@ -1,0 +1,23 @@
+class Solution 
+{
+    public int numSub(String s) 
+    {
+        int res = 0, len = 0, mod = (int)(1e9 + 7);
+        for (char c : s.toCharArray()) 
+        {
+            if (c == '1')
+             {
+                len++;
+                res = (res + len) % mod;
+            }
+             else 
+             {
+                len = 0;
+            }
+        }
+        
+        return res;
+    }
+}
+//tc:o(n)
+//sc::o(1)
