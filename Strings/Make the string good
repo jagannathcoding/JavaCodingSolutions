@@ -1,0 +1,54 @@
+make the string good
+/////APPROACH 1 USING STACK
+//TC:O(N)
+//SC:O(N)
+class Solution {
+    public String makeGood(String s) 
+    {
+        Stack<Character>st=new Stack<>();
+        int i=0;
+       while(i<s.length())
+        {
+           if (!st.isEmpty() && (st.peek() + 32 == s.charAt(i) || (st.peek() - 32) == s.charAt(i))) 
+            {
+                st.pop();
+                i++;
+            }
+            else
+            {
+                st.push(s.charAt(i));
+                i++;
+            }
+        }
+        StringBuffer sb=new StringBuffer();
+        
+        while(!st.isEmpty())
+        {
+           String s1="";
+            s1=s1+st.pop();
+           sb.append(s1);
+        }
+        return sb.reverse().toString();
+    }
+}
+
+////APPROACH -2 ////
+
+
+class Solution {
+    public String makeGood(String s) {
+        StringBuilder result = new StringBuilder();
+        
+        for (char ch : s.toCharArray()) {
+            if (result.length() > 0 && (ch + 32 == result.charAt(result.length() - 1) || ch - 32 == result.charAt(result.length() - 1))) {
+                result.deleteCharAt(result.length() - 1);
+            } else {
+                result.append(ch);
+            }
+        }
+        
+        return result.toString();
+    }
+}
+//TC:O(n) WHERE O(N^2) IN WORST CASE SINCE DELETION TAKES O(K) AND WE NEED TO DELETE ALL LETTERS
+//SC:O(N)
