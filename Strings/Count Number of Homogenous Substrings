@@ -1,0 +1,23 @@
+class Solution 
+{
+    public int countHomogenous(String s) {
+        int mod=(int)(1e9+7);
+        int cnt=0;
+        int len=0;
+        for(int i=0;i<s.length();i++)
+        {
+            if(i>0&&s.charAt(i)==s.charAt(i-1))
+            {
+                len++;
+            }
+            else
+            {
+                len=1;
+            }
+            cnt=(cnt+len)%mod;
+        }
+        return cnt;
+    }
+}
+//tc:o(N)
+//sc:o(1)
