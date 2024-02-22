@@ -1,0 +1,31 @@
+class Solution {
+    int missingNumber(int nums[], int n) 
+    {
+        // Your Code Here
+        
+     /*Arrays.sort(nums);
+        int lb = 1; 
+        int ub = nums.length;
+        int res = nums.length + 1; 
+        while (lb <= ub) 
+        {
+            int mid = lb + (ub - lb) / 2;
+            if (nums[mid - 1] > mid) 
+            { //1 based indexing er jonney adjustin korchi
+                ub = mid - 1;
+                res = mid;
+            } else {
+                lb = mid + 1;
+            }
+        }
+//binary search
+        return res;*/
+        int res=nums.length+1;
+        for(int i=1;i<=nums.length;i++)
+        {
+            res=res^(i);
+            res=res^nums[i-1];///bit manipulation
+        }
+        return res;
+    }
+}
