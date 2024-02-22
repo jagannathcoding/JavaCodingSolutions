@@ -1,0 +1,22 @@
+class Solution {
+    public int findMin(int[] nums) 
+    {
+         int lb=0;
+         int ub=nums.length-1;
+         while(lb<ub)
+         {
+            int mid=lb+((ub-lb)/2);
+            if(nums[mid]>nums[ub])
+            {
+                lb=mid+1;
+            }
+            else
+            {
+                ub=mid;
+            }
+         }
+         return  nums[ub];
+    }
+}
+//tc:o(log n)
+//sc:o(1)
