@@ -1,0 +1,44 @@
+///tc:o(log n)
+//sc:o(1)
+class Solution {
+    
+    int findKRotation(int arr[], int n) 
+    {
+        int lb=0;
+    int ub=n-1;
+    
+    while(lb<ub)
+    {
+        int mid=(lb+ub)/2;
+        if(arr[mid]<arr[ub])
+        {
+            ub=mid;
+        }
+        else
+        {
+            lb=mid+1;
+        }
+    }
+    return ub;
+    }
+    }
+////APPROACH-2/////
+//tc:o(n)
+//sc:o(1)
+/*
+class Solution {
+    int min=Integer.MAX_VALUE;
+    int pos;
+    int findKRotation(int arr[], int n) {
+        // code here
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]<min)
+            {
+                min=arr[i];
+                pos=i;
+            }
+        }
+        return pos;
+    }
+}*/
