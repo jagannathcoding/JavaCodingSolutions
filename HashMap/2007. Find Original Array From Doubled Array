@@ -1,0 +1,36 @@
+2007. Find Original Array From Doubled Array
+
+class Solution {
+    public int[] findOriginalArray(int[] changed) {
+        if(changed.length%2!=0)
+            return new int[]{};
+            
+        Arrays.sort(changed);
+        HashMap<Integer,Integer>map=new HashMap<>();
+        for(int i:changed)
+        {
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        List<Integer>alist=new ArrayList<>();
+        for(int num:changed)
+        {
+            int twice=2*num;
+            if(map.getOrDefault(num,0)==0)continue;
+
+            if(!map.containsKey(twice)||map.get(twice)==0)
+            return new int[]{};
+
+             alist.add(num);
+            
+            map.put(num, map.get(num) - 1);
+            map.put(twice, map.get(twice) - 1);
+        }
+        int[] res = new int[alist.size()];
+        for (int i = 0; i < alist.size(); i++) {
+            res[i] =alist.get(i);
+        }
+        return res;
+    }
+}
+//tc:o(n log n)
+//sc:o(n)
