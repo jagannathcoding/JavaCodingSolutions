@@ -1,0 +1,30 @@
+//T.C : O(n * 2^n) - For ever index, we have two possibilities so 2^n and for copying each string to result, it takes O(n)
+//S.C : O(n) - Recursion tree depth will be at max  = n  (NOTE : I have ignored space taken for storing result)
+class Solution
+{
+     List<String> result = new ArrayList<>();
+    void solve(StringBuilder curr, String s, int idx) 
+    {
+        if(idx==s.length())
+        {
+            if(curr.length()>0)
+            {
+                result.add(curr.toString());
+            }
+            return ;
+        }
+        
+        curr.append(s.charAt(idx));
+        solve(curr,s,idx+1);
+        curr.deleteCharAt(curr.length() - 1);
+        solve(curr,s,idx+1);
+    }
+    public List<String> AllPossibleStrings(String s)
+    {
+        // Code here
+        StringBuilder curr = new StringBuilder();
+        solve(curr,s,0);
+        Collections.sort(result);
+        return result;
+    }
+}
