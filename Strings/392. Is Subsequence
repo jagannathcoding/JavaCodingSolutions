@@ -1,0 +1,27 @@
+
+class Solution 
+{
+    public boolean isSubsequence(String s, String t) 
+    {     
+       int z=0;
+    int l=s.length();
+    int l1=t.length();
+
+        if(l == 0) return true;
+        if(l1== 0) return false;
+       for(int i=0;i<t.length();i++)
+       {
+               if(s.charAt(z)==t.charAt(i))
+               {
+                   z++;
+               }
+               if(z==l)
+               {
+                   return true;
+               }
+       }
+       return false;
+    }
+}
+//tc:o(n)
+//sc:o(1)
