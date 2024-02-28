@@ -1,0 +1,64 @@
+class MyQueue {
+//T.C : push - O(1), pop - Amortized O(1) , peek() - O(1), empty() - O(1)
+//S.C : O(n)
+
+Stack<Integer>input;
+Stack<Integer>output;
+int peekel;
+    public MyQueue() 
+    {
+        input=new Stack<>();
+        output=new Stack<>();
+        peekel=-1;
+    }
+    
+    public void push(int x) 
+    {
+        if(input.empty())
+        peekel=x;
+
+        input.push(x);
+    }
+
+
+ // Amortized O(1)
+    public int pop() 
+    {
+        if(output.empty())
+        {
+              // Transfer elements from input to output (O(n))
+            while(!input.empty())
+            {
+                output.push(input.pop());
+            }
+        }
+        return output.pop();
+
+    }
+    
+    public int peek() {
+        
+        if(output.empty())return peekel;
+
+        return output.peek();
+    }
+    
+    public boolean empty() {
+        return input.empty()&&output.empty();
+    }
+}
+//T.C : push - O(1), pop - Amortized O(1) , peek() - O(1), empty() - O(1)
+//S.C : O(n)
+
+
+
+
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
