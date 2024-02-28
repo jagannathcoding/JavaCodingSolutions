@@ -1,0 +1,28 @@
+933. Number of Recent Calls
+
+class RecentCounter {
+Queue<Integer>qu;
+    public RecentCounter() 
+    {
+        qu=new LinkedList<>();
+    }
+    
+    public int ping(int t) 
+    {
+        qu.add(t);
+        int x=t-qu.peek();
+        while(x>3000&&qu.size()>0)
+        {
+            qu.poll();
+            x=t-qu.peek();
+        }
+        return qu.size();
+
+    }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.ping(t);
+ */
