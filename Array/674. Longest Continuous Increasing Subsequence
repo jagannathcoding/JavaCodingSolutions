@@ -28,3 +28,22 @@ Constraints:
 
 1 <= nums.length <= 104
 -109 <= nums[i] <= 109
+
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        int cnt=1;
+        int z=1;
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]<nums[i+1]){
+                cnt++;
+                z=Math.max(z,cnt);
+            }
+            else
+            {
+                cnt=1;
+            }
+        }
+        return z;
+    }
+}
