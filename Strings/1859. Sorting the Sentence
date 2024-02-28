@@ -1,0 +1,25 @@
+class Solution {
+    public String sortSentence(String s) {
+        StringBuilder sb=new StringBuilder();
+
+
+
+        String s1[]=s.split(" ");
+        String res[]=new String[s1.length];
+        for(String i:s1)
+        {
+            int j=(int)(i.charAt(i.length()-1)-'0');
+            res[j-1]=i.substring(0,i.length()-1);
+        }
+        int i=0;
+        for( i=0;i<res.length-1;i++)
+        {
+            sb.append(res[i]).append(" ");
+        }
+        sb.append(res[i]);
+        return sb.toString();
+        
+    }
+}
+//tc:o(n)
+//sc:o(n)
