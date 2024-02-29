@@ -37,3 +37,29 @@ Expected Auxiliary Space: O(1).
 Constraints:
 1 <= n <= 105
 1 <= arr[i] <= 105
+
+
+class Solution {
+    long sumBitDifferences(int[] arr, int n) {
+        // code here
+        long res=0;
+        
+        for(int i=0;i<32;i++)
+        {
+            long cnt=0;
+            long setBiton=0;
+            for(int val:arr)
+            {
+                if((val&(1<<i))!=0)
+                {
+                    setBiton++;
+                }
+            }
+            long setBitoff=arr.length-setBiton;
+            long diff=setBiton*setBitoff*2;
+            res+=diff;
+            
+        }
+        return res;
+    }
+}
