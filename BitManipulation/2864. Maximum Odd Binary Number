@@ -1,0 +1,61 @@
+/*class Solution {
+    public String maximumOddBinaryNumber(String s) {
+       
+        StringBuilder sb=new StringBuilder();
+        for(int k=0;k<s.length();k++)
+        sb.append('0');
+
+        int i=0;
+        int l=s.length();
+        for(char c:s.toCharArray())
+        {
+            if(c=='1')
+            {
+                if(sb.charAt(l-1)=='1')
+                {
+                    sb.setCharAt(i,'1');
+                    i++;
+                }
+                else
+                {
+                    sb.setCharAt(l-1,'1');
+                }
+            }
+        }
+        return sb.toString();
+    }
+}
+//tc:o(n)
+//sc:o(n)*/
+public class Solution {
+    public String maximumOddBinaryNumber(String s) {
+        int n = s.length();
+
+        // Initialize result string with '0' of length n
+        StringBuilder result = new StringBuilder();
+        for (int k = 0; k < n; k++) {
+            result.append('0');
+        }
+
+        int countOnes = 0;
+        for (char ch : s.toCharArray()) {
+            if (ch == '1') {
+                countOnes++;
+            }
+        }
+
+
+        int j = 0;
+
+        while (countOnes > 1) {
+            result.setCharAt(j, '1');
+            j++;
+
+            countOnes--;
+        }
+
+        result.setCharAt(n - 1, '1');
+        return result.toString();
+    }
+}//tc:o(n)
+//sc:o(N)
