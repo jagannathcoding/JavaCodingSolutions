@@ -9,7 +9,7 @@
     }
 }
 tc:o(nlogn)
-sc:o(1) (Not considering the space taken to store the result)*/
+sc:o(1) */
 ///approach2
 class Solution {
     public int[] sortedSquares(int[] nums) {
@@ -36,3 +36,5 @@ class Solution {
         return result;
     }
 }
+tc:o(nlogn)
+sc:o(1) (Not considering the space taken to store the result*/
