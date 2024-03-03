@@ -1,0 +1,29 @@
+class Solution 
+{
+    public int maxProductDifference(int[] nums) 
+    {
+        
+        int g=Integer.MIN_VALUE;
+        int sg=Integer.MIN_VALUE;
+
+        int s=Integer.MAX_VALUE;
+        int ss=Integer.MAX_VALUE;
+        for(int i:nums)
+        {
+            if(i>g)
+            {
+                sg=g;
+                g=i;
+            }
+            else sg=Math.max(sg,i);
+
+            if(i<s)
+            {
+                ss=s;
+                s=i;
+            }
+            else ss=Math.min(ss,i);
+        }
+        return ((g*sg)-(s*ss)); 
+    }
+}
