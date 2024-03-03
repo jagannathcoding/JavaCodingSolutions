@@ -18,7 +18,7 @@ class Solution
                 }
                 map.get(key).add(mat[i][j]);
             }
-        }//system e korlam
+        }//system e korlam laptop
          boolean flip = true;
         for (List<Integer> values : map.values()) {
             if (flip==true)
