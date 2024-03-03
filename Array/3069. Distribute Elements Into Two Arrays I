@@ -1,0 +1,30 @@
+class Solution {
+    public int[] resultArray(int[] nums) {
+
+     ArrayList<Integer>alist1=new ArrayList<>();
+         ArrayList<Integer>alist2=new ArrayList<>();
+         alist1.add(nums[0]);
+         alist2.add(nums[1]);
+         for(int i=2;i<nums.length;i++)
+         {
+             int l1=alist1.size();
+             int l2=alist2.size();
+             if(alist1.get(l1-1)>alist2.get(l2-1))alist1.add(nums[i]);
+             else alist2.add(nums[i]);
+         }
+         int k=0;
+         for(int i=0;i<alist1.size();i++)
+         {
+             nums[k]=alist1.get(i);
+             k++;
+         }
+         for(int j=0;j<alist2.size();j++)
+         {
+             nums[k]=alist2.get(j);
+             k++;
+         }
+         return nums;
+    }
+}
+//tc:o(n)
+//sc:o(n)
