@@ -1,0 +1,32 @@
+class Solution {
+    public int bagOfTokensScore(int[] tokens, int power) {
+        Arrays.sort(tokens);//sort kore nicchi
+        int maxScore=0;
+        int score=0;
+        int i=0;
+        int j=tokens .length-1;///power baraley beshi power e barabo...
+        while(i<=j)
+        {
+            if(power>=tokens[i])
+            {
+                power=power-tokens[i];
+                score=score+1;
+                i++;
+                maxScore=Math.max(score,maxScore);
+            }
+            else if(score>=1)
+            {
+                score=score-1;
+                power=power+tokens[j];
+                j--;
+            }
+            else
+            {
+                return maxScore;
+            }
+        }
+        return maxScore;
+    }
+}
+//tc:o(nlogn)
+//sco(1)
