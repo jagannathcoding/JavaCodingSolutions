@@ -87,7 +87,7 @@ class Solution {
     }
 }*/
 
-//Approach 3
+//Approach 3(using 1 pass)
 //T.C : O(n)
 //S.C : O(1)
 class Solution {
