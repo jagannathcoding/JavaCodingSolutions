@@ -1,0 +1,116 @@
+3005. Count Elements With Maximum Frequency
+
+You are given an array nums consisting of positive integers.
+
+Return the total frequencies of elements in nums such that those elements all have the maximum frequency.
+
+The frequency of an element is the number of occurrences of that element in the array.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,2,3,1,4]
+Output: 4
+Explanation: The elements 1 and 2 have a frequency of 2 which is the maximum frequency in the array.
+So the number of elements in the array with maximum frequency is 4.
+Example 2:
+
+Input: nums = [1,2,3,4,5]
+Output: 5
+Explanation: All elements of the array have a frequency of 1 which is the maximum.
+So the number of elements in the array with maximum frequency is 5.
+ 
+
+Constraints:
+
+1 <= nums.length <= 100
+1 <= nums[i] <= 100
+
+
+
+//Approach1
+//tc:o(n)
+//sc:o(n)
+/*import java.util.*;
+class Solution {
+    public int maxFrequencyElements(int[] nums) 
+    {
+        HashMap<Integer,Integer>map=new HashMap<>();
+        ///can use an array size of 101 since constraint is less 1 to 100
+        for(int i:nums)
+        {
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        
+        int max=Integer.MIN_VALUE;
+        
+         for (int freq:map.values())
+         {
+             max=Math.max(max,freq);
+         }
+        int s=0;
+        for (int freq:map.values())
+         {
+             if(max==freq)s=s+freq;
+         }
+        return s;
+        
+        
+    }
+}*/
+
+/////Approach-2 (Using 2 Pass)
+//T.C : O(n)
+//S.C : O(1)
+/*
+class Solution {
+    public int maxFrequencyElements(int[] nums) 
+    {
+        int cnt[]=new int[101];
+        int maxFreq=0;
+        for(int i:nums)
+        {
+            cnt[i]++;//increasing the freq of num
+            maxFreq=Math.max(maxFreq,cnt[i]);
+        }
+        int res=0;
+        for(int i=0;i<101;i++)
+        {
+            if(cnt[i]==maxFreq)
+            res=res+maxFreq;
+        }
+        // final int finalMaxFreq = maxFreq; //why final keyword ? To access inside lambda
+       // return (int) Arrays.stream(arr).filter(count -> count == finalMaxFreq).count() * finalMaxFreq;
+        return res;
+       
+    }
+}*/
+
+//Approach 3
+//T.C : O(n)
+//S.C : O(1)
+class Solution {
+    public int maxFrequencyElements(int[] nums) 
+    {
+        int maxFreq=0;
+        int total=0;
+        int cnt[]=new int[101];
+        for(int i:nums)
+        {
+            cnt[i]++;
+
+            int freq=cnt[i];
+            if(freq>maxFreq)
+            {
+                maxFreq=freq;
+                total=maxFreq;
+            }
+            else if(freq==maxFreq)
+            {
+                total+=maxFreq;
+            }
+        }
+        return total;
+    }
+}
