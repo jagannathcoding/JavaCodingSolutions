@@ -44,3 +44,30 @@ class Solution {
 }
 //T.C : O(n)
 //S.C : O(1)
+
+
+//with hashmap
+class Solution {
+    public int firstUniqChar(String s) {
+      
+        HashMap<Character,List<Integer>>map=new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            if(!map.containsKey(s.charAt(i)))
+            {
+                map.put(s.charAt(i),new ArrayList<>());
+            }
+            map.get(s.charAt(i)).add(i);
+        }
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+            List<Integer>val=map.get(c);
+            if(val.size()==1)return val.get(0);
+        }
+        return -1;
+    }
+}
+       
+       //tc:o(n)
+       //sc:o(n)
