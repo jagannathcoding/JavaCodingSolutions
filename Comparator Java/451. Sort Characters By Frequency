@@ -1,0 +1,85 @@
+451. Sort Characters By Frequency
+Solved
+Medium
+Topics
+Companies
+Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.
+
+Return the sorted string. If there are multiple answers, return any of them.
+
+
+
+
+/*public class Solution {
+    public String frequencySort(String s) 
+    {
+        Map<Character, Integer> map = new HashMap<>();
+        for (char ch : s.toCharArray())
+         {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+
+        list.sort((a, b) -> b.getValue() - a.getValue());
+
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<Character, Integer> entry : list) {
+            char ch = entry.getKey();
+            int frequency = entry.getValue();
+            for (int i = 0; i < frequency; i++) {
+                result.append(ch);
+            }
+        }
+
+        return result.toString();
+    }
+}
+*/
+
+
+import java.util.*;
+
+public class Solution {
+    public String frequencySort(String s) {
+        // Assuming ASCII characters, we can use an array to store the frequencies
+        int[] frequencies = new int[256]; 
+
+        // Count frequencies of characters
+        for (char ch : s.toCharArray()) {
+            frequencies[ch]++;
+        }
+
+        // Create a list of pairs (character, frequency)
+        List<Pair> list = new ArrayList<>();
+        for (int i = 0; i < 256; i++) {
+            if (frequencies[i] > 0) {
+                list.add(new Pair((char) i, frequencies[i]));
+            }
+        }
+
+        // Sort list by frequency in descending order
+        Collections.sort(list, (a, b) -> b.frequency - a.frequency);
+
+        // Build result string
+        StringBuilder result = new StringBuilder();
+        for (Pair pair : list) {
+            for (int i = 0; i < pair.frequency; i++) {
+                result.append(pair.character);
+            }
+        }
+
+        return result.toString();
+    }
+    
+    class Pair {
+        char character;
+        int frequency;
+        
+        Pair(char character, int frequency) {
+            this.character = character;
+            this.frequency = frequency;
+        }
+    }
+}
