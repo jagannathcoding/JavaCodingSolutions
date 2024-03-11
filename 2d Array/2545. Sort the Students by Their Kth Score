@@ -1,0 +1,56 @@
+/*public class Solution {
+    public int[][] sortTheStudents(int[][] score, int k)
+     {
+        // Sort the array of arrays based on the values at index k
+        Arrays.sort(score, new Comparator<int[]>() {
+         
+            public int compare(int[] a, int[] b) {
+                return Integer.compare(b[k], a[k]);
+            }
+        });
+
+        return score;
+    }
+}*/
+public class Solution {
+    static class PairComparator implements Comparator<Pair> 
+    {
+        public int compare(Pair a, Pair b) 
+        {
+            return Integer.compare(b.first, a.first);
+        }
+    }
+    public static int[][] sortTheStudents(int[][] score, int k) {
+        Pair[] pairs = new Pair[score.length];
+        for (int i = 0; i < score.length; i++)
+         {
+            pairs[i] = new Pair(score[i][k], score[i]);
+        }
+       /*for (Pair pair : pairs) {
+        System.out.print("[" + pair.first + ", ");
+        for (int value : pair.second) {
+            System.out.print(value + " ");
+        }
+        System.out.println("]");
+    }*/
+        Arrays.sort(pairs, new PairComparator());
+
+        int[][] result = new int[score.length][score[0].length];
+        for (int i = 0; i < score.length; i++) 
+        {
+            result[i] = pairs[i].second;
+        }
+        return result;
+    }
+}
+class Pair
+    {
+        int first;
+        int[] second;
+
+        public Pair(int first, int[] second)
+        {
+            this.first = first;
+            this.second = second;
+        }
+    }
