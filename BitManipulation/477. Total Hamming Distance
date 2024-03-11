@@ -1,0 +1,24 @@
+477. Total Hamming Distance
+class Solution {
+    public int totalHammingDistance(int[] nums) {
+        int res=0;
+        for(int i=0;i<32;i++)
+        {
+            int setBitOn=0;
+            for(int j:nums)
+            {
+                if((j&(1<<i))!=0)
+                {
+                    setBitOn++;
+                }
+            }
+            int setBitOff=nums.length-setBitOn;
+            int diff=setBitOn*setBitOff;
+            res+=diff;
+        }
+        return res;
+    }
+}
+
+//tc:o(32*n)
+//sc:o(1)
