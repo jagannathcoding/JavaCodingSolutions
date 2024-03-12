@@ -52,3 +52,48 @@ class Solution {
 } 
 tc:o(n)
 sc:o(n)
+/////approach 2
+
+//Approach-2
+//T.C : O(n*k)  (n = size of input, k = maximum length of a string in the input vector)
+//S.C : O(n*k)
+class Solution {
+    private String generate(String s)
+     {
+        int[] count = new int[26];
+
+        for (char ch : s.toCharArray()) {
+            count[ch - 'a']++;
+        }
+
+        StringBuilder sb= new StringBuilder();
+
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > 0) {
+                sb.append(String.valueOf((char) (i + 'a')).repeat(count[i]));
+            }
+        }
+
+        return sb.toString();
+    }
+
+     
+
+    public List<List<String>> groupAnagrams(String[] strs) 
+    {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) 
+        {
+            String newString = generate(s);
+
+            if (!map.containsKey(newString)) {
+                map.put(newString, new ArrayList<>());
+            }
+
+            map.get(newString).add(s);
+        }
+
+        return new ArrayList<>(map.values());
+    }
+}
