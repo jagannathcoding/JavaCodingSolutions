@@ -1,0 +1,84 @@
+/*USING MAP
+APPROACH -1 
+class Solution 
+{
+    public String customSortString(String order, String s) 
+    {
+        HashMap<Character,Integer>map=new HashMap<>();
+        String res="";
+        for(char c:s.toCharArray())
+        {
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+         StringBuilder result = new StringBuilder();
+        
+    
+        for (char ch : order.toCharArray()) 
+        {
+            result.append(String.valueOf(ch).repeat(map.getOrDefault(ch, 0)));
+            map.remove(ch); 
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            char ch = entry.getKey();
+            result.append(String.valueOf(ch).repeat(entry.getValue()));
+        }
+        return result.toString();
+    }
+}*/
+
+
+//APPROACH -2
+//T.C : O(str.length())
+//S.C : O(26) ~ O(1)
+/*class Solution 
+{
+    public String customSortString(String order, String s) 
+    {
+        int cnt[]=new int[26];
+        for(char c:s.toCharArray())
+        {
+            cnt[c-'a']++;
+        }
+        StringBuilder res=new StringBuilder();
+        for(char ch:order.toCharArray())
+        {
+            while(cnt[ch-'a']-->0)
+            {
+                res.append(ch);
+            }
+        }
+        for(char ch:s.toCharArray())
+        {
+            if(cnt[ch-'a']>0)
+            {
+                res.append(ch);
+            }
+        }
+        return res.toString();
+    }
+}
+*/
+ class Solution {
+    public String customSortString(String order, String str) {
+        Integer[] index = new Integer[26];
+        Arrays.fill(index, -1);
+
+        // Map characters to their positions in 'order'
+        for (int i = 0; i < order.length(); i++)
+            index[order.charAt(i) - 'a'] = i;
+        Comparator<Character> lambda = (ch1, ch2) -> index[ch1 - 'a'].compareTo(index[ch2 - 'a']);
+        Character[] charArray = new Character[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            charArray[i] = str.charAt(i);
+        }
+
+        Arrays.sort(charArray, lambda);
+
+        // Convert Character array back to String
+        StringBuilder result = new StringBuilder(charArray.length);
+        for (char ch : charArray) {
+            result.append(ch);
+        }
+
+        return result.toString();
+    }
+}
