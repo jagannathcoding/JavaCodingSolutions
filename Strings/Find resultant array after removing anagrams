@@ -1,0 +1,58 @@
+//Approach -1
+class Solution {
+public List<String> removeAnagrams(String[] words) {
+        List<String>alist=new ArrayList<>();
+        String previous="";
+        for(String s:words)
+        {
+            char temp[]=s.toCharArray();
+        Arrays.sort(temp);
+            String s1=new String(temp);
+            if(!s1.equals(previous))
+            {
+                alist.add(s);
+                previous=s1;
+            }
+        }
+        return alist;
+    }
+}//tc:o(nlogn)
+//sc:o(n)
+
+//////////////////////////approach -2 ////////////////////////
+////////tc:o(n)
+//sc:o(n)
+class Solution {
+    String generate(String s)
+    {
+        int cnt[]=new int[26];
+        for(char c:s.toCharArray())
+        {
+            cnt[c-'a']++;
+        }
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<26;i++)
+        {
+            if(cnt[i]>0)
+            {
+                sb.append(String.valueOf((char)(i+'a')).repeat(cnt[i]));
+            }
+        }
+        return sb.toString();
+    }
+    public List<String> removeAnagrams(String[] words) {
+        List<String>alist=new ArrayList<>();
+        String previous="";
+        for(String s:words)
+        {
+           
+            String s1=generate(s);
+            if(!s1.equals(previous))
+            {
+                alist.add(s);
+                previous=s1;
+            }
+        }
+        return alist;
+    }
+}
