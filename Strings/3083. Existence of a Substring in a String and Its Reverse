@@ -40,4 +40,4 @@ class Solution
         }
         }
 //tc:o(N)
-//sc:o(1)
+//sc:o(n)
