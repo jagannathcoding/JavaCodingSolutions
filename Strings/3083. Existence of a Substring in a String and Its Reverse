@@ -1,0 +1,43 @@
+/*class Solution {
+    public boolean isSubstringPresent(String s) {
+        ArrayList<String>alist=new ArrayList<>();
+        for(int i=0;i<s.length()-1;i++)
+        {
+            String s1=s.substring(i,i+2);
+            alist.add(s1);
+        }
+        StringBuilder s2=new StringBuilder(s);
+        s2=s2.reverse();
+        String s3=s2.toString();
+
+        for(int j=0;j<s3.length()-1;j++)
+        {
+             String s1=s3.substring(j,j+2);
+             if(alist.contains(s1))return true;
+        }
+        
+        return false;
+        
+    }
+}
+tc:o(n)
+//sc:o(n)
+*/
+class Solution 
+{
+    public boolean isSubstringPresent(String s) 
+    {
+        String reverse="";
+        for(char ch:s.toCharArray())
+        {
+            reverse=ch+reverse;
+        }
+        for(int i=0;i<s.length()-1;i++)
+        {
+            if(reverse.contains(s.substring(i,i+2)))return true;
+        }
+        return false;
+        }
+        }
+//tc:o(N)
+//sc:o(1)
