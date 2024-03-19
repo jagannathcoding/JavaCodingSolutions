@@ -1,3 +1,46 @@
+import java.util.*;
+
+class Solution {
+    public String frequencySort(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        Character[] chars = new Character[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            chars[i] = s.charAt(i);
+        }
+        Arrays.sort(chars, (c1, c2) -> {
+            int f1=map.get(c1);
+            int f2=map.get(c2);
+            if(f1!=f2)
+            return Integer.compare(f2,f1);
+            else
+            return Character.compare(c1, c2);
+        });
+        StringBuilder sb = new StringBuilder();
+        for (char c : chars) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 451. Sort Characters By Frequency
 Solved
 Medium
