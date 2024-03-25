@@ -1,0 +1,47 @@
+public class Solution {
+     static int secondLargest(int n,int a[])
+    {
+        int largest=a[0];
+        int secondLargest=Integer.MIN_VALUE;    
+        for(int i=1;i<n;i++)
+        {
+            if(a[i]>largest)
+            {
+                secondLargest=largest;
+                largest=a[i];
+            }
+            else if(a[i]<largest && a[i]>secondLargest)
+            {
+                secondLargest=a[i];
+            }
+        }
+        return secondLargest;
+    }
+    static  int secondSmallest(int n,int a[])
+     {
+         int smallest=a[0];
+         int ssmallest=Integer.MAX_VALUE;
+         for(int i=1;i<n;i++)
+         {
+             if(a[i]<smallest)
+             {
+                 ssmallest=smallest;
+                 smallest=a[i];
+             }
+             else if(a[i]!=smallest&&a[i]<ssmallest)
+             {
+                 ssmallest=a[i];
+             }
+             }
+              return ssmallest;
+         }
+        
+     
+    public static int[] getSecondOrderElements(int n, int []a) {
+
+        // Write your code here.
+        int slargest=secondLargest(n,a);
+        int ssmallest=secondSmallest(n,a);
+        return new int[]{slargest,ssmallest};
+    }
+}
