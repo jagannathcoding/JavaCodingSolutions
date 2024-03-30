@@ -1,0 +1,36 @@
+2062. Count Vowel Substrings of a String
+
+class Solution
+ {
+     int countVowelsAtmokstk(String word,int k)
+     {
+        HashSet<Character> vowels = new HashSet<>(Set.of('a', 'e', 'i', 'o', 'u'));
+         int i=0,cnt=0;
+         HashMap<Character,Integer>map=new HashMap<>();
+         for(int j=0;j<word.length();j++)
+            {
+                if(!vowels.contains(word.charAt(j)))
+                {
+                    map.clear();
+                    i=j+1;
+                    continue;
+                }
+                 map.put(word.charAt(j), map.getOrDefault(word.charAt(j), 0) + 1);
+                while(map.size()>k)
+                {
+                    map.put(word.charAt(i), map.getOrDefault(word.charAt(i), 0) - 1);
+                    if(map.getOrDefault(word.charAt(i),0) == 0) 
+                    {
+                        map.remove(word.charAt(i));
+                    }
+                     i++;
+                }
+                cnt+=(j-i+1);
+            }
+return cnt;
+     }
+    public int countVowelSubstrings(String word)
+    {
+        return countVowelsAtmokstk(word,5)-countVowelsAtmokstk(word,4);
+    }
+}
