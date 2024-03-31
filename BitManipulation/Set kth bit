@@ -3,7 +3,7 @@ Given a number N and a value K. From the right, set the Kth bit in the binary re
 Example 1:
 
 Input:
-N = 10 
+N = 10 (updated example)
 K = 2
 Output:
 14 
