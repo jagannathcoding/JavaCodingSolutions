@@ -6,7 +6,7 @@ Input:
 N = 10 
 K = 2
 Output:
-14
+14 
 Explanation:
 Binary representation of the given number
 10 is: 1 0 1 0, number of bits in the 
