@@ -1,0 +1,50 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character,Character>map1=new HashMap<>();
+        HashMap<Character,Character>map2=new HashMap<>();
+        int m=s.length();
+        for(int i=0;i<m;i++)
+        {
+            char ch1=s.charAt(i);
+            char ch2=t.charAt(i);
+
+            if(map1.containsKey(ch1)&&map1.get(ch1)!=ch2)return false;
+
+            if(map2.containsKey(ch2)&&map2.get(ch2)!=ch1)return false;
+
+         map1.put(ch1,ch2);
+         map2.put(ch2,ch1);   
+        }
+        return true;
+    }
+}//
+tc:o(n)
+//sc:o(n)
+//Approach -1
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character,Character>map=new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            char c1=s.charAt(i);
+            char c2=t.charAt(i);
+            if(map.containsKey(c1)&& map.get(c1)!=c2)//foo bar///
+            return false;
+
+            //jodi c1 na thakey kintu jodi already c2 map e thakey false karon question
+            //e bola achey No two characters may map to the same character
+            // but a character may map to itself.
+            //eg:s1:"badc", s2:"baba"
+            if(!map.containsKey(c1) && map.containsValue(c2))
+            return false;
+
+            map.put(c1,c2);
+        }
+        return true;
+  //tc:o(n)
+//sc:o(n)
+    }
+}
+
+///Approch 2-////////////////////////////////////////////////////////
+
