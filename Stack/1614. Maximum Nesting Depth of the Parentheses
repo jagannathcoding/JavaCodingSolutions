@@ -1,6 +1,6 @@
 A string is a valid parentheses string (denoted VPS) if it meets one of the following:
 
-https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/submissions/1222984208/?envType=daily-question&envId=2024-04-04
+https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/description/?envType=daily-question&envId=2024-04-04
 
 It is an empty string "", or a single character not equal to "(" or ")",
 It can be written as AB (A concatenated with B), where A and B are VPS's, or
