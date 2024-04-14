@@ -1,4 +1,7 @@
 Row with max 1s
+
+https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1
+
 MediumAccuracy: 33.09%Submissions: 239K+Points: 4
 Given a boolean 2D array of n x m dimensions, consisting of only 1's and 0's, where each row is sorted. Find the 0-based index of the first row that has the maximum number of 1's.
 
