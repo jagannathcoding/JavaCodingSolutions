@@ -1,0 +1,43 @@
+What is Lower Bound?
+The lower bound algorithm finds the first or the smallest index in a sorted array where the value at that 
+index is greater than or equal to a given key i.e. x.
+
+The lower bound is the smallest index, ind, where arr[ind] >= x. But if any such index is not found,
+the lower bound algorithm returns n i.e. size of the given array.
+
+Compare arr[mid] with x: With comparing arr[mid] to x, we can observe 2 different cases:
+Case 1 - If arr[mid] >= x: This condition means that the index mid may be an answer. So, we will update the ‘ans’ variable with mid and 
+search in the left half if there is any smaller index that satisfies the same condition. Here, we are eliminating the right half.
+
+
+Case 2 - If arr[mid] < x: In this case, mid cannot be our answer and we need to find some bigger element.
+So, we will eliminate the left half and search in the right half for the answer.
+
+
+https://www.naukri.com/code360/problems/lower-bound_8165382?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM
+
+//tc:o(log n)
+//sc:o(1)
+
+public class Solution {
+    public static int lowerBound(int []nums, int n, int x) {
+        // Write your code here
+        int lb=0;
+        int ub=n-1;
+        int ans=n;
+        while(lb<=ub)
+        {
+            int mid=lb+(ub-lb)/2;
+            if(nums[mid]>=x)
+            {
+                ub=mid-1;
+                ans=mid;
+            }
+            else{
+                lb=mid+1;
+            }
+        }
+        return ans;
+        
+    }
+}
