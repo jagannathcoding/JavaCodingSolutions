@@ -1,3 +1,5 @@
+https://leetcode.com/problems/implement-queue-using-stacks/description/
+
 class MyQueue {
 //T.C : push - O(1), pop - Amortized O(1) , peek() - O(1), empty() - O(1)
 //S.C : O(n)
