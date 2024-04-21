@@ -4,6 +4,12 @@ https://www.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-spa
 
 //flip vertically - For anticlock wise rotation'
 
+//Company Tags:
+////Amazon Google Facebook
+
+//tc: O(N*N)
+Space: O(1)
+
 class Solution {
     void rotateMatrix(int matrix[][], int N) {
         // code here
