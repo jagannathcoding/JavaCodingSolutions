@@ -1,4 +1,7 @@
 Rotate a 2D array
+////////step 1: transpose
+///////step 2: reverse each row
+
 
 class Solution 
 {
