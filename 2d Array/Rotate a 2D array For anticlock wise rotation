@@ -1,0 +1,34 @@
+Rotate a 2D array For anticlock wise rotation
+
+//flip vertically - For anticlock wise rotation'
+
+class Solution {
+    void rotateMatrix(int matrix[][], int N) {
+        // code here
+         for(int i=0;i<matrix.length;i++)
+         {
+             for(int j=i;j<matrix[0].length;j++)
+             {
+                 int temp=matrix[i][j];
+                 matrix[i][j]=matrix[j][i];
+                 matrix[j][i]=temp;
+             }
+         }
+         
+         for (int col = 0; col < N; col++) 
+         {
+            int row = 0;
+            int mid = N / 2; // Assuming N is the size of the matrix
+            while (row < mid) 
+            {
+        // Swap elements in the column
+                int temp = matrix[row][col];
+                matrix[row][col] = matrix[N - row - 1][col];
+                matrix[N - row - 1][col] = temp;
+                row++;
+            }
+         }
+
+
+    }
+}
