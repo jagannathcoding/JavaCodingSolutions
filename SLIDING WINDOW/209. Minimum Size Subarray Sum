@@ -1,4 +1,5 @@
-
+/////if used coniguous in question think about sliding window because in most cases sliding window can be used to solve
+//this type of problem,s
 https://leetcode.com/problems/minimum-size-subarray-sum/description/
 
 Company :Google, Accolite,Amazon,Meta , GoldMan Sachs
