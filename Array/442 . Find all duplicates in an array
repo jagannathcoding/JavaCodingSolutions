@@ -1,5 +1,7 @@
 https://leetcode.com/problems/find-all-duplicates-in-an-array/description/
 
+
+
 442. Find All Duplicates in an Array
 Solved
 Medium
@@ -31,6 +33,9 @@ n == nums.length
 1 <= n <= 105
 1 <= nums[i] <= n
 Each element in nums appears once or twice 
+
+
+////***************** TIPS:          USE NUMBER AS AN INDEX AS RANGE IS BETWEEEN 1 TO N
 
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
