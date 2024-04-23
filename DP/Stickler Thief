@@ -37,6 +37,7 @@ Constraints:
 Company Tags
 Paytm Flipkart Amazon OYORooms Walmart Google
 
+//////////////////APPROACH - 1 /////// SIMPLE MATHEMATICAL CALCULATION
 class Solution
 {
     //Function to find the maximum money the thief can get.
@@ -66,3 +67,5 @@ class Solution
         return max_val; 
     } 
     }
+///////////////////// APPROACH -2 ////////////////// 
+//////DYNAMIC PROGRAMMMING SOLUTION WILL UPDATE SOON
