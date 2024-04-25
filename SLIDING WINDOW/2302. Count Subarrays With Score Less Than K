@@ -1,5 +1,9 @@
 2302. Count Subarrays With Score Less Than K
 
+leverl : hard
+
+
+
 https://leetcode.com/problems/count-subarrays-with-score-less-than-k/description/
 
 The score of an array is defined as the product of its sum and its length.
@@ -9,9 +13,7 @@ Given a positive integer array nums and an integer k, return the number of non-e
 
 A subarray is a contiguous sequence of elements within an array.
 
- 
-
-Example 1:
+ Example 1:
 
 Input: nums = [2,1,4,3,5], k = 10
 Output: 6
