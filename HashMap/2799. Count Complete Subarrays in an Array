@@ -33,6 +33,9 @@ Constraints:
 1 <= nums.length <= 1000
 1 <= nums[i] <= 2000
 
+
+
+
 class Solution {
     public int countCompleteSubarrays(int[] nums) {
         
@@ -48,10 +51,10 @@ class Solution {
         while(j<nums.length)
         {
             map.put(nums[j],map.getOrDefault(nums[j],0)+1);
-            j++;
+            
             while(map.size()==distinctElements)
             {
-                cnt+= l-j+1;
+                cnt+= l-j;
                 map.put(nums[i],map.get(nums[i])-1);
                 if(map.get(nums[i])==0)
                 {
@@ -59,11 +62,8 @@ class Solution {
                 }
                 i++;
             }
-            
+            j++;
         }
         return cnt;
     }
 }
-
-tc:o(n)
-//sc:o(n)
