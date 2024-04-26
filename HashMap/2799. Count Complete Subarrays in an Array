@@ -67,3 +67,5 @@ class Solution {
         return cnt;
     }
 }
+//tc:o(n)
+//sc:o(n)
