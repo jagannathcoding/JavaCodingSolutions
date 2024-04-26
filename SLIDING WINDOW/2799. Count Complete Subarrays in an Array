@@ -47,10 +47,10 @@ class Solution {
         while(j<nums.length)
         {
             map.put(nums[j],map.getOrDefault(nums[j],0)+1);
-            j++;
+            
             while(map.size()==distinctElements)
             {
-                cnt+= l-j+1;
+                cnt+= l-j;
                 map.put(nums[i],map.get(nums[i])-1);
                 if(map.get(nums[i])==0)
                 {
@@ -58,7 +58,7 @@ class Solution {
                 }
                 i++;
             }
-            
+            j++;
         }
         return cnt;
     }
