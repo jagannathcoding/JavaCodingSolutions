@@ -38,8 +38,9 @@ Constraints:
 1 <= nums.length <= 105
 0 <= nums[i] <= 106
 0 <= k <= 106
-
-//////////////Appraoch -1 
+////////////tc in both approach ches is o(n)
+///sc:o(1)
+//////////////Appraoch -1 (Using In Built Function)
 
 class Solution {
     public int minOperations(int[] nums, int k) {
@@ -48,8 +49,28 @@ class Solution {
         for(int i:nums)totalXor^=i;
         
         int difference=totalXor^k;
-        return Integer.bitCount(difference);
+        return Integer.bitCount(difference);///tc:o(logn ) here but as the domination factor is o(n) tc is therefore o(n)
     }
 }
-///////////////Approach-2
 
+
+///////Approach -2 (withput using inbuilt function)
+
+class Solution {
+    public int minOperations(int[] nums, int k) {
+        
+        int totalXor=0;
+        for(int i:nums)totalXor^=i;
+        
+        int difference=totalXor^k;
+        //return Integer.bitCount(difference);
+
+        int count=0;
+         while (difference != 0) 
+         {
+            difference=difference&(difference - 1); // Clears the least significant bit set to 1
+            count++;
+        }
+        return count;
+    }
+}
