@@ -1,0 +1,104 @@
+345. Reverse Vowels of a String
+Solved
+Easy
+
+https://leetcode.com/problems/reverse-vowels-of-a-string/
+
+Topics :String , Two pointer
+
+Companies : Google, Zoho, Flipkart, 
+
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+ 
+
+Example 1:
+
+Input: s = "hello"
+Output: "holle"
+Example 2:
+
+Input: s = "leetcode"
+Output: "leotcede"
+ 
+
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consist of printable ASCII characters.
+
+class Solution {
+
+
+boolean isVowel(char c)
+{
+    if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+    return true;
+
+    return false;
+}
+    public String reverseVowels(String s)
+    {
+        int l=s.length();
+        int i=0;
+        int j=l-1;
+        char charArray[]=s.toCharArray();
+        while(i<j)
+        {
+            if(!isVowel(s.charAt(i)))i++;
+
+            else if(!isVowel(s.charAt(j)))j--;
+
+            else
+            {
+                char temp=charArray[i];
+                charArray[i]=charArray[j];
+                charArray[j]=temp;
+                i++;
+                j--;
+            }
+        }
+        return new String(charArray);
+        }
+}
+//tc ; o(n)
+//sc:
+
+/*
+
+
+
+//tc:o(n)
+//sc:o(n)
+class Solution {
+
+    boolean isVowel(char c) {
+        return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+    }
+
+    public String reverseVowels(String s) {
+        char[] charArray = s.toCharArray();
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i < j) {
+            if (!isVowel(charArray[i])) {
+                i++;
+            } else if (!isVowel(charArray[j])) {
+                j--;
+            } else {
+                char temp = charArray[i];
+                charArray[i] = charArray[j];
+                charArray[j] = temp;
+                i++;
+                j--;
+            }
+        }
+
+        return new String(charArray);
+    }
+}
+*/
