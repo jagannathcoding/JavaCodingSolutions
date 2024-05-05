@@ -1,0 +1,84 @@
+3136. Valid Word
+
+https://leetcode.com/problems/valid-word/description/
+
+
+A word is considered valid if:
+
+It contains a minimum of 3 characters.
+It consists of the digits 0-9, and the uppercase and lowercase English letters. (Not necessary to have all of them.)
+It includes at least one vowel.
+It includes at least one consonant.
+You are given a string word.
+
+Return true if word is valid, otherwise, return false.
+
+Notes:
+
+'a', 'e', 'i', 'o', 'u', and their uppercases are vowels.
+A consonant is an English letter that is not a vowel.
+ 
+
+Example 1:
+
+Input: word = "234Adas"
+
+Output: true
+
+Explanation:
+
+This word satisfies the conditions.
+
+Example 2:
+
+Input: word = "b3"
+
+Output: false
+
+Explanation:
+
+The length of this word is fewer than 3, and does not have a vowel.
+
+Example 3:
+
+Input: word = "a3$e"
+
+Output: false
+
+Explanation:
+
+This word contains a '$' character and does not have a consonant.
+
+class Solution {
+
+    boolean isVowel(char c)
+    {
+        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+        return true;
+
+        return false;
+    }
+    public boolean isValid(String word) {
+        int l=word.length();
+        if(l<3)return false;
+
+        int vowelCount=0;
+        int consonantCount=0;
+        for(char c:word.toCharArray())
+        {
+            int x=(int)c;
+            if(x>=97&&x<=122||x>=65&&x<=90)
+            {
+                boolean v=isVowel(c);
+                if(v==true)vowelCount++;
+                else consonantCount++;
+            }
+            else if(!(x>=48&&x<=57))return false;
+        }
+        return vowelCount>=1 && consonantCount>=1;
+    }
+}
+//tc:o(N)
+//sc:o(1)
+
+ 
