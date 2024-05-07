@@ -18,7 +18,7 @@ Example 1:
 
 Input: fruits = [1,2,1]
 Output: 3
-Explanation: We can pick from all 3 trees.
+Explanation: We can pick from all 3 trees
 Example 2:
 
 Input: fruits = [0,1,2,2]
@@ -35,7 +35,7 @@ If we had started at the first tree, we would only pick from trees [1,2].
 //TC:O(N)
 //SC:O(N)
 
-
+///using for loop
 class Solution 
 {
     public int totalFruit(int[] fruits) 
@@ -61,5 +61,35 @@ class Solution
             res = Math.max(res, right - left + 1);
         }
         return res;
+    }
+}
+
+
+
+///////////Approach -2
+class Solution {
+    public int totalFruit(int[] fruits) {
+        int i=0;
+        int j=0;
+        int cnt=Integer.MIN_VALUE;
+        int l=fruits.length;
+        HashMap<Integer,Integer>map=new HashMap<>();
+        while(j<l)
+        {
+            int currentFruit=fruits[j];
+            map.put(currentFruit,map.getOrDefault(currentFruit,0)+1);
+            while(map.size()>2)
+            {
+                map.put(fruits[i],map.get(fruits[i])-1);
+                if(map.get(fruits[i])==0)
+                {
+                    map.remove(fruits[i]);
+                }
+                i++;
+            }
+            cnt=Math.max(cnt,j-i+1);
+            j++;
+        }
+        return cnt;
     }
 }
