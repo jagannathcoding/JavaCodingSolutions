@@ -3,10 +3,9 @@
 
 https://leetcode.com/problems/find-the-original-array-of-prefix-xor/description/
 
-
 Solved
 Medium
-Topics
+
 Companies : Microsoft
 Hint
 You are given an integer array pref of size n. Find and return the array arr of size n that satisfies:
@@ -72,3 +71,39 @@ class Solution {
 }
 //Approach-2 (Without Using extra array)
 //T.C : O(n)
+
+
+
+************************************
+if list
+
+//Approach-1 (Using extra array)
+//T.C : O(n)
+class Solution {
+    public List<Integer> findArray(List<Integer> pref) {
+        int n = pref.size();
+
+        List<Integer> arr = new ArrayList<>();
+        arr.add(pref.get(0));
+
+        for (int i = 1; i < n; i++) {
+            arr.add(pref.get(i) ^ pref.get(i - 1));
+        }
+
+        return arr;
+    }
+}
+
+//Approach-2 (Without Using extra array)
+//T.C : O(n)
+class Solution {
+    public List<Integer> findArray(List<Integer> pref) {
+        int n = pref.size();
+
+        for (int i = n - 1; i > 0; i--) {
+            pref.set(i, pref.get(i) ^ pref.get(i - 1));
+        }
+
+        return pref;
+    }
+}
