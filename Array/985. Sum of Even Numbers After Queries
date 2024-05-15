@@ -63,4 +63,5 @@ class Solution {
     }
 }
 //tc:o(n)
-//sc:o(n)
+//sc:o(n)// if comsidering the arr array 
+///we may also not consider it as it is returning
