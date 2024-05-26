@@ -119,6 +119,11 @@ class Solution {
 
 
 **********Approach-3**********
+
+///////////prothomey shob elements er oporey or operation korchi
+/////tarpor left shift korchi result ke l-1 array er length -1 eita puro observation
+///////////// 3 er binary 11, 7 er binary 111..... or operation korley ashey...111 tarpor 111 ke left shift korechi arrar er size-1 diye
+/// 111<<1    final output 1110 maney 14 in decimal
 class Solution {
     public int subsetXORSum(int[] nums) {
         int l=nums.length;
