@@ -155,4 +155,43 @@ class Solution {
 //S.C : O(1)
 
 ************Approach -4 ***********(Using counting Sort + Prefix Sum)
-///to be updated soon
+
+(Using counting Sort + Prefix Sum)
+//T.C : O(n)
+//S.C : O(n)
+class Solution 
+{
+    public int specialArray(int[] nums) 
+    {
+        int l = nums.length;
+        
+        // Frequency array
+        int[] freq = new int[l + 1];
+        
+        
+        for (int num : nums)
+         {
+            if (num >= l) 
+            {
+                freq[l]++;
+            } 
+            else 
+            {
+                freq[num]++;
+            }
+        }
+        
+        // Calculate cumulative sum from the end
+        int c_sum = 0;
+        for (int i = l; i >= 0; i--)
+         {
+            c_sum += freq[i];
+            if (i == c_sum) 
+            {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+}
