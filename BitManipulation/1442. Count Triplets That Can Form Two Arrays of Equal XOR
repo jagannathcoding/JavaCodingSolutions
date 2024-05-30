@@ -1,0 +1,114 @@
+1442. Count Triplets That Can Form Two Arrays of Equal XOR
+
+Given an array of integers arr.
+
+We want to select three indices i, j and k where (0 <= i < j <= k < arr.length).
+
+Let's define a and b as follows:
+
+a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1]
+b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]
+Note that ^ denotes the bitwise-xor operation.
+
+Return the number of triplets (i, j and k) Where a == b.
+
+ 
+
+Example 1:
+
+Input: arr = [2,3,1,6,7]
+Output: 4
+Explanation: The triplets are (0,1,2), (0,2,2), (2,3,4) and (2,4,4)
+Example 2:
+
+Input: arr = [1,1,1,1,1]
+Output: 10
+ 
+
+Constraints:
+
+1 <= arr.length <= 300
+1 <= arr[i] <= 108
+
+***************Approach -1 ************
+//////tc:o(n^3)
+//sc:o(1)
+class Solution {
+    public int countTriplets(int[] arr) {
+        int l=arr.length;
+        int cnt=0;
+        for(int i=0;i<l;i++)
+        {
+            for(int j=i+1;j<l;j++)
+            {
+                int a=0;
+                for(int k=i;k<j;k++)
+                {
+                    a=a^arr[k];
+                }
+                int b=0;
+                for(int k=j;k<l;k++)
+                {
+                    a=a^arr[k];
+                    if(a==b)cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+}
+
+
+
+***************Approach -2************
+class Solution {
+    public int countTriplets(int[] arr) {
+        int l=arr.length;
+        int cnt=0;
+        for(int i=0;i<l;i++)
+        {
+            int a=arr[i];
+
+            for(int k=i+1;k<l;k++)
+            
+            {
+                a=a^arr[k];
+                if(a==0)
+                {
+                    cnt+=(k-i);
+                }
+            }
+        }
+        return cnt;
+    }
+}
+
+*****************Approach -3****************
+class Solution {
+    public int countTriplets(int[] arr) {
+        int l=arr.length;
+        int cnt=0;
+        int prefixXor[]=new int[l+1];
+        prefixXor[0]=0;
+        for(int i=1;i<=l;i++)
+        {
+            prefixXor[i]=prefixXor[i-1]^arr[i-1];
+        }
+
+
+        for(int i=0;i<prefixXor.length;i++)
+        {
+            for(int k=i+1;k<prefixXor.length;k++)
+            {
+               
+                if(prefixXor[i]==prefixXor[k])
+                {
+                    cnt+=(k-i-1);
+                }
+            }
+        }
+        return cnt;
+    }
+}
+//tc:o(n^2) much better approach
+//sc:o(1)
