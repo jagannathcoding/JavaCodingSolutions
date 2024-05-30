@@ -82,6 +82,8 @@ class Solution {
         return cnt;
     }
 }
+//tc:o(n^2)
+//sc:o(1)
 
 *****************Approach -3****************
 class Solution {
