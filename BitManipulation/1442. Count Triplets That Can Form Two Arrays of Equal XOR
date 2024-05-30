@@ -1,5 +1,7 @@
 1442. Count Triplets That Can Form Two Arrays of Equal XOR
 
+https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/?envType=daily-question&envId=2024-05-30
+
 Given an array of integers arr.
 
 We want to select three indices i, j and k where (0 <= i < j <= k < arr.length).
@@ -11,9 +13,7 @@ b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]
 Note that ^ denotes the bitwise-xor operation.
 
 Return the number of triplets (i, j and k) Where a == b.
-
  
-
 Example 1:
 
 Input: arr = [2,3,1,6,7]
