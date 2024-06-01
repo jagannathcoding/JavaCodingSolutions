@@ -1,9 +1,8 @@
-
-Testcase
-Testcase
-Test Result
-Code
 260. Single Number III
+
+https://leetcode.com/problems/single-number-iii/
+
+
 Solved
 Medium
 Topics
@@ -88,31 +87,29 @@ import java.util.Arrays;
 
 class Solution {
     public int[] singleNumber(int[] nums) {
-        // Find XOR of all elements in the array
-        int xorResult = Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
-        
-        // Find the rightmost set bit (mask)
+        int xor=0;
+       for(int i:nums)xor^=i;
         int mask = 1;
-        while ((xorResult & mask) == 0) {
+        while ((xor& mask) == 0) 
+        {
             mask <<= 1;
         }
-
         int groupA = 0;
         int groupB = 0;
-
         // Divide the numbers into two groups and perform XOR in each group
-        for (int num : nums) {
+        for (int num : nums) 
+        {
             if ((num & mask) != 0) {
                 groupA ^= num;
-            } else {
+            } else 
+            {
                 groupB ^= num;
             }
         }
-
-        // Return the two unique numbers
         return new int[]{groupA, groupB};
     }
 }
+
 //tc:o(n)
 //sc:o(1)
 
