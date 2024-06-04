@@ -4,8 +4,11 @@ Given a string s which consists of lowercase or uppercase letters, return the le
 palindrome
  that can be built with those letters.
 
-Letters are case sensitive, for example, "Aa" is not considered a palindrome.
 
+Company : GOOGLE, AMAZON
+
+
+Letters are case sensitive, for example, "Aa" is not considered a palindrome.
  
 
 Example 1:
