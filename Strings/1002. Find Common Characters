@@ -1,0 +1,67 @@
+1002. Find Common Characters
+
+Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: words = ["bella","label","roller"]
+Output: ["e","l","l"]
+Example 2:
+
+Input: words = ["cool","lock","cook"]
+Output: ["c","o"]
+ 
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consists of lowercase English letters.
+
+
+//T.C : O(l*w) , w = average length of each word,,,,,,, l = number of words
+//S.C : O(1)
+
+class Solution {
+
+    void fillArray(String words,int count[])
+    {
+        for(char ch:words.toCharArray())
+        {
+            count[ch-'a']++;
+        }
+    }
+    public List<String> commonChars(String[] words) {
+        
+        List<String>res=new ArrayList<>();
+        int cnt[]=new int[26];
+        fillArray(words[0],cnt);
+
+        int l=words.length;
+        for(int i=1;i<l;i++)
+        {
+            int temp[]=new int[26];
+            fillArray(words[i],temp);
+
+            for(int j=0;j<26;j++)
+            {
+                cnt[j]=Math.min(cnt[j],temp[j]);
+            }
+        }
+        for(int i=0;i<26;i++)
+        {
+            if(cnt[i]>0)
+            {
+                for(int j=0;j<cnt[i ];j++)
+                {
+                    res.add(String.valueOf((char)(i+'a')));
+                }
+            }
+        }
+        return res;
+
+
+    }
+}
