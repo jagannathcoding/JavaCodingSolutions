@@ -6,7 +6,7 @@ Given a dictionary consisting of many roots and a sentence consisting of words s
 
 Return the sentence after the replacement.
 
- 
+ ************Approach-2 using trie kortey hobey
 
 Example 1:
 
