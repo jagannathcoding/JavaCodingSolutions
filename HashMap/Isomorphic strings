@@ -1,3 +1,7 @@
+    Company Tags                : LinkedIn
+
+
+
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character,Character>map1=new HashMap<>();
@@ -73,5 +77,5 @@ class Solution {
     }
 }
 
-///Approch 2-////////////////////////////////////////////////////////
+
 
