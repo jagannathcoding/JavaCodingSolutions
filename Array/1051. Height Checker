@@ -45,10 +45,58 @@ Constraints:
 
 
 
-import java.util.Arrays;
+*****************Approach -1 ***********************
+class Solution {
+    public void countingSort(int[] nums) {
+        int n = nums.length;
+        int maxVal = Arrays.stream(nums).max().getAsInt();
+        
+        int[] count = new int[maxVal + 1];
+        
+        // Count the occurrences of each number
+        for (int num : nums) {
+            count[num]++;
+        }
+        
+        // Compute the cumulative count
+        for (int i = 1; i <= maxVal; i++) {
+            count[i] += count[i - 1];
+        }
+        
+        int[] sortedNums = new int[n];
+        
+        // Construct the sorted array in ascending order
+        for (int i = n - 1; i >= 0; i--) {
+            sortedNums[count[nums[i]] - 1] = nums[i];
+            count[nums[i]]--;
+        }
+        
+        // Copy the sorted array back to the original array
+        System.arraycopy(sortedNums, 0, nums, 0, n);
+    }
 
-import java.util.Arrays;
+    public int heightChecker(int[] heights) {
+        int n = heights.length;
+        
+        int[] sortedHeights = Arrays.copyOf(heights, n);
+        countingSort(sortedHeights);
+        
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            if (heights[i] != sortedHeights[i]) {
+                result++;
+            }
+        }
+        
+        return result;
+    }
 
+    
+}
+
+
+
+**********************Approach-2*****************
 class Solution {
     public void countingSort(int[] nums) {
         int minVal = Arrays.stream(nums).min().getAsInt();
