@@ -20,7 +20,6 @@ Input: hand = [1,2,3,4,5], groupSize = 4
 Output: false
 Explanation: Alice's hand can not be rearranged into groups of 4.
 
- 
 
 Constraints:
 
@@ -31,33 +30,27 @@ Constraints:
 
 class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
-        int n = hand.length;
+        int l=hand.length;
+        if(l%groupSize!=0)
+        return false;
 
-        if (n % groupSize != 0) {
-            return false;
+        TreeMap<Integer,Integer>map=new TreeMap<>();
+        for(int i:hand)
+        {
+            map.put(i,map.getOrDefault(i,0)+1);
         }
 
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-        for (int card : hand) {
-            map.put(card, map.getOrDefault(card, 0) + 1);
-        }
-
-        while (!map.isEmpty()) {
-            int curr = map.firstKey();
-
-            for (int i = 0; i < groupSize; i++) {
-                if (!map.containsKey(curr + i)) {
-                    return false;
-                }
-
-                map.put(curr + i, map.get(curr + i) - 1);
-                if (map.get(curr + i) == 0) {
-                    map.remove(curr + i);
-                }
+        while(!map.isEmpty())
+        {
+            int val=map.firstKey();
+            for(int i=0;i<groupSize;i++)
+            {
+                if(!map.containsKey(val+i))return false;
+            
+            map.put(val+i,map.get(val+i)-1);
+            if(map.get(val+i)==0)map.remove(val+i);
             }
         }
-
         return true;
     }
 }
- 
