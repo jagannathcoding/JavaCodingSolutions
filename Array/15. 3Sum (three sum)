@@ -75,5 +75,4 @@ System.out.print(ans);
         return ans;
     }
 }
-//tc:o(n^2)
-//sc:o(n)
+
