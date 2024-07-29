@@ -1,4 +1,7 @@
-2418. Sort the People
+https://leetcode.com/problems/sort-the-people/
+
+
+2418. Sort the People (solved using 3 approaches)
 Solved
 Easy
 Topics
@@ -24,7 +27,7 @@ Output: ["Bob","Alice","Bob"]
 Explanation: The first Bob is the tallest, followed by Alice and the second Bob.
 
 
-
+*********************Approach-1********************
 
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) 
@@ -65,3 +68,39 @@ class Pair
         return this.height;
     }
 }
+**********************Approach-2*************************
+public class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        String[][] people = new String[names.length][2];
+        for (int i = 0; i < names.length; i++) {
+            people[i][0] = names[i];
+            people[i][1] = String.valueOf(heights[i]);
+        }
+        Arrays.sort(people, (a, b) -> Integer.compare(Integer.parseInt(b[1]), Integer.parseInt(a[1])));
+        String[] result = new String[names.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = people[i][0];
+        }
+        return result;
+    }
+}
+
+*******************Approach-3**********************
+public class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        Integer[] indices = new Integer[names.length];
+        for (int i = 0; i < names.length; i++) {
+            indices[i] = i;
+        }
+        
+        Arrays.sort(indices, (a, b) -> Integer.compare(heights[b], heights[a]));
+        
+        String[] result = new String[names.length];
+        for (int i = 0; i < names.length; i++) {
+            result[i] = names[indices[i]];
+        }
+        
+        return result;
+    }
+}
+************************Approach-3*************************
