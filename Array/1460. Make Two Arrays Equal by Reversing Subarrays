@@ -1,5 +1,7 @@
 1460. Make Two Arrays Equal by Reversing Subarrays(using two approaches)
 
+https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/?envType=daily-question&envId=2024-08-03
+
 You are given two integer arrays of equal length target and arr. In one step, you can select any non-empty subarray of arr and reverse it. You are allowed to make any number of steps.
 
 Return true if you can make arr equal to target or false otherwise.
@@ -32,6 +34,28 @@ target.length == arr.length
 1 <= target[i] <= 1000
 1 <= arr[i] <= 1000
 
+
+
+   *******************Approach -2 ***************
+class Solution {
+    public boolean canBeEqual(int[] target, int[] arr) 
+    {
+        int num[]=new int[1001];
+        for(int i=0;i<target.length;i++)
+        {
+            num[target[i]]++;
+            num[arr[i]]--;
+        }
+        for(int i:num)
+        {
+            if(i!=0)return false;
+        }
+        return true;
+    }
+}
+//tc:o(n)
+//sc:o(1)
+
 *******************Approach -1 ***************
 //tc:o(n log n)
 //sc:o(1)
@@ -57,22 +81,4 @@ class Solution {
 }
 
 
-   *******************Approach -2 ***************
-class Solution {
-    public boolean canBeEqual(int[] target, int[] arr) 
-    {
-        int num[]=new int[1001];
-        for(int i=0;i<target.length;i++)
-        {
-            num[target[i]]++;
-            num[arr[i]]--;
-        }
-        for(int i:num)
-        {
-            if(i!=0)return false;
-        }
-        return true;
-    }
-}
-//tc:o(n)
-//sc:o(1)
+
