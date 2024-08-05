@@ -1,5 +1,87 @@
 2053. Kth Distinct String in an Array
 
+https://leetcode.com/problems/kth-distinct-string-in-an-array/?envType=daily-question&envId=2024-08-05
+
+*****************Approach-1***********************
+class Solution 
+{
+    public int frequencyOfString(String[] arr, String findStr) 
+    {
+        int count = 0;
+        for (String s : arr) {
+            if (s.equals(findStr)) {
+                count++;
+            }
+            if (count > 1) {
+                return count;
+            }
+        }
+        return count;
+    }
+
+    public String kthDistinct(String[] arr, int k) 
+    {
+        int count = 0;
+        for (String s : arr) {
+            if (frequencyOfString(arr, s) == 1) 
+            {
+                count++;
+                if (count == k) 
+                {
+                    return s;
+                }
+            }
+        }
+        return "";
+    }
+}
+//tc:o(n^2)
+//sc:o(1)
+
+******************************Approach-2****************************
+class Solution 
+{
+    public String kthDistinct(String[] arr, int k)
+     {
+        HashSet<String> st = new HashSet<>();
+        HashSet<String> unique = new HashSet<>();
+        for (String s : arr) 
+        {
+            if (st.contains(s)) 
+            {
+                continue;
+            }
+
+            if (unique.contains(s)) 
+            {
+                unique.remove(s);
+                st.add(s);
+            } 
+            else 
+            {
+                unique.add(s);
+            }
+        }
+        int count = 0;
+        for (String s : arr) 
+        {
+            if (unique.contains(s)) 
+            {
+                count++;
+            }
+            if (count == k) 
+            {
+                return s;
+            }
+        }
+        return "";
+    }
+}
+
+//tc:o(n)
+//sc:o(n)
+
+********************Approach-3******************
 class Solution {
     public String kthDistinct(String[] arr, int k) {
 
@@ -20,3 +102,5 @@ class Solution {
        return "";
     }
 }
+//tc:o(n)
+//sc:o(n)
