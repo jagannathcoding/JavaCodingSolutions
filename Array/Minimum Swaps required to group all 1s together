@@ -64,6 +64,7 @@ class Complete {
             if(ones>maximumOnes)maximumOnes=ones;
         }
         
-        return subArrayLength-maximumOnes;
+        return subArrayLength-maximumOnes;////jei subarrayte maximum ones sheita total subarray length theke minus korte hobey taholey
+///number of zero berobey shei subarray te sheitai uttor joto kom zero toto kom swap
     }
 }
