@@ -34,7 +34,7 @@ Constraints:
 s consists of digits 0-9 and characters '+', '-', '*', '/', '(', and ')'.
 It is guaranteed that parentheses expression s is a VPS.
 
-///////////////////////////////////////////APPROCH -1 //////////////////////
+///////////////////////////////////////////APPROACH -1 //////////////////////
 class Solution {
     public int maxDepth(String s) {
         int res=0;
