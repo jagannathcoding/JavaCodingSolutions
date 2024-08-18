@@ -15,8 +15,7 @@ class Solution {
 
            res += Math.ceil((double) freq / 3);
         }
-        return res
-        ;
+        return res;
     }
 }
 //T.C : O(n)
