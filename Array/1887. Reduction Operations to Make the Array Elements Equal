@@ -43,6 +43,9 @@ Constraints:
 1 <= nums[i] <= 5 * 104
 
 
+//Using sorting
+//T.C : O(nlogn)
+//S.C : O(1)
 class Solution {
     public int reductionOperations(int[] nums) {
         int l=nums.length;
@@ -57,6 +60,6 @@ class Solution {
         return operations;
     }
 }
-//Approach - Using sorting
+Using sorting
 //T.C : O(nlogn)
 //S.C : O(1)
