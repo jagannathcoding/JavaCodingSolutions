@@ -1,0 +1,62 @@
+1371. Find the Longest Substring Containing Vowels in Even Counts
+Solved
+Medium
+Topics
+Companies
+Hint
+Given the string s, return the size of the longest substring containing each vowel an even number of times. That is, 'a', 'e', 'i', 'o', and 'u' must appear an even number of times.
+
+ 
+
+Example 1:
+
+Input: s = "eleetminicoworoep"
+Output: 13
+Explanation: The longest substring is "leetminicowor" which contains two each of the vowels: e, i and o and zero of the vowels: a and u.
+Example 2:
+
+Input: s = "leetcodeisgreat"
+Output: 5
+Explanation: The longest substring is "leetc" which contains two e's.
+Example 3:
+
+Input: s = "bcbcbc"
+Output: 6
+Explanation: In this case, the given string "bcbcbc" is the longest because all vowels: a, e, i, o and u appear zero times.
+ 
+
+Constraints:
+
+1 <= s.length <= 5 x 10^5
+s contains only lowercase English letters.
+
+************APPROACH-1***************
+//tc:o(n)
+//sc:o(1)
+class Solution {
+    public int findTheLongestSubstring(String s) {
+        int vowelCount[]=new int[5];
+        String currentString="00000";
+        int maxLength = 0;
+        HashMap<String,Integer>map=new HashMap<>();
+        map.put(currentString,-1);
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+            if(s.charAt(i) == 'a')vowelCount[0] = (vowelCount[0] + 1) % 2;
+            else if (c == 'e') vowelCount[1] = (vowelCount[1] + 1) % 2;
+            else if (c == 'i') vowelCount[2] = (vowelCount[2] + 1) % 2;
+            else if (c == 'o') vowelCount[3] = (vowelCount[3] + 1) % 2;
+            else if (c== 'u') vowelCount[4] = (vowelCount[4] + 1) % 2;
+        
+        currentString="";
+        for(int j=0;j<5;j++)currentString+=vowelCount[j];
+
+        if(map.containsKey(currentString))maxLength=Math.max(maxLength,i-map.get(currentString));
+        else
+        map.put(currentString,i);
+       
+    }
+    return maxLength;
+}
+}
