@@ -28,6 +28,39 @@ Constraints:
 2 <= k <= 104
 
 
+
+
+************Approach -2 better using o(n^2) (again time limit exceed)
+class Solution 
+{
+	public int subarraysDivByK(int[] nums, int k) 
+    {
+		int cumulativeSum[]=new int[nums.length];
+        //int sum=0;
+        int cnt=0;
+        cumulativeSum[0]=nums[0];
+        for(int i=1;i<nums.length;i++)
+        {
+            cumulativeSum[i]=cumulativeSum[i-1]+nums[i];
+        }
+        int l=nums.length;
+        for(int i=0;i<l;i++)
+        {
+            for(int j=i;j<l;j++)
+            {
+                int sum=(i==0)?cumulativeSum[j]:cumulativeSum[j]-cumulativeSum[i-1];
+
+                if(sum%k==0)cnt++;
+            }
+        }
+        return cnt;
+    }
+}
+
+
+
+
+**************Approach-3*************(Optimal)
 class Solution 
 {
 	public int subarraysDivByK(int[] nums, int k) 
