@@ -60,4 +60,28 @@ class Solution {
         return true;
     }
 }
-Constraints:
+
+
+
+*************Apppraoch -2 
+
+class Solution {
+    public boolean canArrange(int[] nums, int k) {
+       
+       int rem[]=new int[k];
+       for(int i:nums)
+       {
+            int r=(i%k+k)%k;
+            rem[r]++;
+       } 
+       if(rem[0]%2!=0)return false;
+
+       for(int i=1;i<=rem.length/2;i++)
+       {
+            int secondHalf=k-i;
+            if(rem[secondHalf]!=rem[i])return false;
+       }
+
+       return true;
+    }
+}
