@@ -58,3 +58,6 @@ class Solution {
 
 //tc:o(n)
 //sc:o(n)
+
+
+//Approach-2 (Using set) and without sorting
