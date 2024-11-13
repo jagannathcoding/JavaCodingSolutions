@@ -38,7 +38,8 @@ Constraints:
 
 1 <= n <= 30
 
-//tc:o(2^n)
+//tc:o(2^n *n )
+//sc:o(2^n *n)
 
 
 class Solution {
