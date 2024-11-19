@@ -42,7 +42,22 @@ Constraints:
 1 <= k <= nums.length <= 105
 1 <= nums[i] <= 105
 
+**********************Approach -3*************************
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************************
 APPROACH -1
 class Solution {
     public long maximumSubarraySum(int[] nums, int k) {
