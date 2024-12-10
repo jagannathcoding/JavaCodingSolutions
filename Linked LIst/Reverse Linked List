@@ -8,17 +8,19 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+//////(iterative approach)
+////tc:o(n)
+//sc:o(1)
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode prev=null;
-        ListNode curr=head;
         ListNode temp=head;
-        while(curr!=null)
+        ListNode prev=null;
+        while(temp!=null)
         {
-            temp=temp.next;
-            curr.next=prev;
-            prev=curr;
-            curr=temp;
+            ListNode front=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
         }
         return prev;
     }
