@@ -2,7 +2,7 @@
 Solved
 Easy
 Topics
-Companies
+Companies : DE SHAW , AMAZON
 Hint
 You are given an integer array gifts denoting the number of gifts in various piles. Every second, you do the following:
 
