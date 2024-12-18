@@ -1,10 +1,7 @@
 2593. Find Score of an Array After Marking All Elements
-
-
-2593. Find Score of an Array After Marking All Elements
 Medium
 Topics
-Companies
+Companies :VISA , VISA
 Hint
 You are given an array nums consisting of positive integers.
 
