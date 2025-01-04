@@ -9,6 +9,8 @@ Return true if it is possible to make str2 a subsequence of str1 by performing t
 Note: A subsequence of a string is a new string that is formed from the original string by deleting some (possibly none) of the characters without disturbing the relative positions of the remaining characters.
 
  
+https://leetcode.com/problems/make-string-a-subsequence-using-cyclic-increments/
+
 
 Example 1:
 
