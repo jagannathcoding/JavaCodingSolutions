@@ -67,5 +67,8 @@ n == matrix[0].length
 }
 
 ************************Approach-2********************
+
+ /// dry run done 
+ /// coding on going
   
  
