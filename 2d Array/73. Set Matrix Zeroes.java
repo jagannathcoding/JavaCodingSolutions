@@ -1,4 +1,8 @@
 73. Set Matrix Zeroes
+
+
+ Question link : https://leetcode.com/problems/set-matrix-zeroes/description/
+
 Solved
 Medium
 Topics
@@ -69,6 +73,6 @@ n == matrix[0].length
 ************************Approach-2********************
 
  /// dry run done 
- /// coding on going
+ /// coding shokale korbo
   
  
