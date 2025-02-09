@@ -71,8 +71,58 @@ n == matrix[0].length
 }
 
 ************************Approach-2********************
+//tc: O(2(R*C)), 
 
- /// dry run done 
- /// coding shokale korbo
+//Space Complexity: O(1)
+  class Solution {
+    public void setZeroes(int[][] matrix) {
+        int r=matrix.length;
+        int c=matrix[0].length;
+        int row[]=new int[r];
+        int col[]=new int[c];
+         
+
+        for (int i = 0; i < r; i++) 
+        {
+            for (int j = 0; j < c; j++)
+            {
+                if (matrix[i][j] == 0)
+                {
+                    row[i] = 1; 
+                    col[j] = 1; 
+                }
+            }
+        }
+
+        
+        for (int i = 0; i < r; i++) 
+        {
+            if (row[i] == 1) 
+            { 
+                for (int j = 0; j < c; j++) 
+                {
+                    matrix[i][j] = 0;// If row[i] is marked, koro eibar the entire row to 0
+                }
+            }
+        }
+
+       
+        for (int j = 0; j < c; j++) {
+            if (col[j] == 1)
+            { 
+                for (int i = 0; i < r; i++)
+                {
+                    matrix[i][j] = 0;// If col[j] is marked, koro eibar  the entire column to 0
+                }
+            }
+        }
+
+      
+      
+    }
+}
   
- 
+
+******************Approach-3*************
+ //dry run korte hobey logic mathate eshe geche halka halka
+ //porey korbo ekhon icche koreche na
