@@ -1,3 +1,6 @@
+question dekhtey hobey
+
+
 class Solution
  {
      int dp[]=new int[10001];
