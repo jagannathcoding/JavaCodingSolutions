@@ -3,7 +3,7 @@ Company : amazon
 https://leetcode.com/problems/n-th-tribonacci-number/description/?envType=daily-question&envId=2024-04-24
 
 class Solution {
-    int[] t = new int[38];
+    int[] t = new int[38]; 
     
     public int find(int n) {
         if (n == 0) return 0;
