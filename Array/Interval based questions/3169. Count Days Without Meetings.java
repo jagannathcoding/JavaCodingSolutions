@@ -1,5 +1,7 @@
 3169. Count Days Without Meetings
-Solved
+ 
+https://leetcode.com/problems/count-days-without-meetings/?envType=daily-question&envId=2025-03-24
+
 Medium
 Topics
 Companies
