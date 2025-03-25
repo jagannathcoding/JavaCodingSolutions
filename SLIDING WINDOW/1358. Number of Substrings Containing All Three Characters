@@ -37,25 +37,30 @@ Constraints:
 3 <= s.length <= 5 x 10^4
 s only consists of a, b or c characters.
 
+//T.C : O(2*n) ~ O(n)
+//S.C : O(1)
+
+
 class Solution {
     public int numberOfSubstrings(String s) {
-        
-        int res=0;
-        int r=0;
-        int arr[]=new int[3];
-        Arrays.fill(arr,-1);
-        while(r<s.length())
+        int l = s.length();
+        int result = 0;
+        int num[]=new int[3];
+
+        int i=0,j=0;
+        while(j<l)
         {
-            arr[s.charAt(r)-'a']=r;
-            if(arr[0]!=-1&&arr[1]!=-1&&arr[2]!=-1)
+            char ch=s.charAt(j);
+            num[ch-'a']++;
+            while(num[0]>0&&num[1]>0&&num[2]>0)
             {
-                int minPos=Math.min(arr[0],Math.min(arr[1],arr[2]));
-                res=res+1+minPos;
+                result+=l-j;
+                num[s.charAt(i)-'a']--;
+                i++;
             }
-            r++;
+            j++;
         }
-        return res;
+        return result;
     }
 }
-//tc:o(N)
-//sc:o(1)
+        
