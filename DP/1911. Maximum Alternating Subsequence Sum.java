@@ -90,3 +90,21 @@ Constraints:
 
 
 /////////////Approach -2 *********
+///bottom up apparocach
+//1 based indexing byabohar korechi..
+//
+(Bottom Up) -- T.C : O(n), space : O(n)
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        int l = nums.length;
+        
+        long dp[][]=new long[l+1][2];
+        for(int i=1;i<l+1;i++)
+        {
+            dp[i][0]=  Math.max(dp[i-1][1]-nums[i-1],dp[i-1][0]);
+            dp[i][1]=  Math.max(dp[i-1][0]+nums[i-1],dp[i-1][1]);
+        }
+        return Math.max(dp[l][0],dp[l][1]);
+    }
+}
+//
