@@ -1,5 +1,6 @@
 ////BFS TRAVERSAL
 
+//  https://leetcode.com/problems/number-of-provinces/description/
 
 class Solution {
     void bfs(int node, ArrayList<ArrayList<Integer>> adjList, boolean[] visited) 
