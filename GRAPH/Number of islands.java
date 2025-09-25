@@ -5,7 +5,7 @@ class Solution12 {
         int r = grid.length;
         int c = grid[0].length;
 
-        int delRow[] = {-1, 0, 1, 0};
+        int delRow[]   = {-1, 0, 1, 0};
         int delCol[] = {0, 1, 0, -1};
 
         for (int k = 0; k < 4; k++) {
