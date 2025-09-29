@@ -1,0 +1,58 @@
+**************dfs*******************
+
+
+
+class Solution {
+    
+    
+     boolean dfs(int node,   ArrayList<ArrayList<Integer>>adj,int visited[],int pathVisited[])
+    {
+        visited[node]=1;
+        pathVisited[node]=1;
+      for(int i:adj.get(node))
+        {
+            if(visited[i]==0)
+            {
+                if(dfs(i,adj,visited,pathVisited)==true)
+                return true;
+            }
+            else if(visited[i]==1&& pathVisited[i]==1)return true;
+        }   
+                
+        pathVisited[node]=0;
+        return false;
+    }
+    
+    
+    
+    
+    public boolean isCyclic(int V, int[][] edges) {
+        // code here
+        int vis[]=new int[V];
+        int pathVisited[]=new int[V];
+
+
+        ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+        for(int i=0;i<V;i++)
+        {
+            adj.add(new ArrayList<>());
+        }
+        for(int []i:edges)
+        {
+            adj.get(i[0]).add(i[1]);
+        }
+        
+        
+        
+        
+        
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i]==0)//not visited
+            {
+                if(dfs(i,adj,vis,pathVisited)==true)return true;
+            }
+        }
+        return false;
+    }
+}
