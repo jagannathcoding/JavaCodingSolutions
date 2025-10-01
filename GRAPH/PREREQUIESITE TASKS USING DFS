@@ -1,0 +1,47 @@
+/// SAME AS DETECT CYCLE IN A DIREACTED GRAPH
+
+import java.util.*;
+
+class Solution {
+    
+    private boolean dfs(int node, ArrayList<ArrayList<Integer>> adj, int[] vis, int[] pathVis) {
+        vis[node] = 1;
+        pathVis[node] = 1;
+        
+        for (int it : adj.get(node)) {
+            if (vis[it] == 0) {
+                if (dfs(it, adj, vis, pathVis)) return true;
+            } else if (pathVis[it] == 1) {
+                return true; 
+            }
+        }
+        
+        pathVis[node] = 0; // remove from current path
+        return false;
+    }
+    
+    public boolean isPossible(int N, int P, int[][] prerequisites) {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            adj.add(new ArrayList<>());
+        }
+        
+      
+        for (int i = 0; i < P; i++) {
+            int a = prerequisites[i][0];
+            int b = prerequisites[i][1];
+            adj.get(a).add(b);
+        }
+        
+        int[] vis = new int[N];
+        int[] pathVis = new int[N];
+        
+        for (int i = 0; i < N; i++) {
+            if (vis[i] == 0) {
+                if (dfs(i, adj, vis, pathVis)) return false; 
+            }
+        }
+        
+        return true; 
+    }
+}
