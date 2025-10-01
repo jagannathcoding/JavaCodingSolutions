@@ -1,0 +1,49 @@
+// User function Template for Java
+
+class Solution {
+    public boolean isPossible(int N, int P, int[][] e) {
+        // Your Code goes here
+    
+        ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+        for(int i=0;i<N;i++)
+        {
+            adj.add(new ArrayList<>());
+        }
+        
+        for(int i[]:e)
+        {
+            adj.get(i[0]).add(i[1]);///adjacency matrix toiri
+        }
+        
+        int indegree[]=new int[N];
+        for(int i=0;i<N;i++)
+        {
+            for(int j:adj.get(i))indegree[j]++;
+        }
+        Queue<Integer>q=new LinkedList<>();
+        for(int i=0;i<N;i++)
+        {
+            if(indegree[i]==0)q.add(i);
+        }
+        
+        ArrayList<Integer>alist=new ArrayList<>();
+        int i=0;
+        while(!q.isEmpty())
+        {
+            int node=q.peek();
+            q.remove();
+            alist.add(node);
+            for(int j:adj.get(node))
+            {
+                indegree[j]--;
+                if(indegree[j]==0)q.add(j);
+            }
+        }
+        
+        if(alist.size()==N)return true;
+        
+        return false;
+    }
+    }
+        
+    
