@@ -40,7 +40,68 @@ Constraints:
 skill.length is even.
 1 <= skill[i] <= 1000
 
-**********Approach-1************
+/////////////***********code on 2025 **** november 9 , 2025
+as test cases changes
+class Solution {
+    public long dividePlayers(int[] skill) {
+        int freq[] = new int[1001];
+        int sum = 0;
+
+       
+        for (int i : skill) {
+            sum += i;
+            freq[i]++;
+        }
+
+        int n = skill.length;
+        int teams = n / 2;
+
+      
+      
+        if (sum % teams != 0) return -1;
+
+        int targetSum = sum / teams;
+        long chem = 0;
+
+        for (int i : skill) {
+        
+            if (freq[i] == 0) continue;
+            freq[i]--;
+
+            int remainingSkill = targetSum - i;
+
+          
+            if (remainingSkill < 0 || remainingSkill > 1000) {
+                return -1;
+            }
+
+          
+            if (freq[remainingSkill] <= 0) {
+                return -1;
+            }
+
+          
+            chem += (long) i * (long) remainingSkill;
+            freq[remainingSkill]--;
+        }
+
+       
+        return chem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+**********Approach-1************ 2024
 //tc:o(n log n)
 //sc:o(1)
 class Solution {
@@ -97,3 +158,7 @@ class Solution {
 }
 //tc:o(n)
 ////S.C : O(1000) ~= O(1)
+
+
+
+
