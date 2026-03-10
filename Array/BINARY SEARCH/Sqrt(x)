@@ -1,0 +1,26 @@
+https://leetcode.com/problems/sqrtx/
+
+
+
+
+class Solution {
+    public int mySqrt(int x) {
+        int lb=0;
+        int ub=x;
+        int ans=0;
+        while(lb<=ub)
+        {
+            long mid=lb+((ub-lb)/2);
+            if(mid*mid<=x)
+            {
+                
+                lb=(int)mid+1;
+            }
+            else
+            {
+                ub=(int)mid-1;
+            }
+        }
+        return ub;
+    }
+}
