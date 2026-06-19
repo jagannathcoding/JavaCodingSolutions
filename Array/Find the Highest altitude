@@ -1,0 +1,33 @@
+//tc:o(N)
+//sc:o(n)
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int l=gain.length;
+        int arr[]=new int[l+1];
+        arr[0]=0;
+        for(int i=1;i<=l;i++)
+        {
+            arr[i]=arr[i-1]+gain[i-1];
+        }
+        Arrays.sort(arr);
+        
+        return arr[l];
+    }
+}
+
+************Approach 2-******
+//tc:o(n)
+sc:o(1)
+
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int max=0;
+        int current=0;
+        for(int i:gain)
+        {
+            current+=i;
+            max=Math.max(current,max);
+        }
+        return max;
+    }
+}
